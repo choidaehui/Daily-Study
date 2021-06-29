@@ -140,7 +140,7 @@ git st
      git push orign --delete v1.0.0
      -> 해당 태그의 파일을 삭제
      
-##브랜치(branch)
+## 브랜치(branch)
 1. git branch 
 -> 현재 컴퓨터에 있는 브랜치 확인
 2. git branch --all 
