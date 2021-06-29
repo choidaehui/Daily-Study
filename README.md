@@ -140,6 +140,116 @@ git st
      git push orign --delete v1.0.0
      -> 해당 태그의 파일을 삭제
      
+##브랜치(branch)
+1. git branch 
+-> 현재 컴퓨터에 있는 브랜치 확인
+2. git branch --all 
+-> 서버(깃 허브 등)에 있는 브랜치를 포함하여 모든 브랜치 확인
+3. git branch new-branch
+-> new-branch라는 브랜치 생성
+4. git switch new-branch
+-> new-branch라는 브랜치로 이동
+5. git switch -c new-branch2
+-> new-branch2라는 브랜치를 생성한 후 이동
+6. git checkout 해시코드
+-> 해시코드에 해당하는 버전의 파일로 이동
+7. git checkout fix
+-> fix라는 브랜치로 이동
+8. git checkout -b testing
+-> testing라는 브랜치 생성 후 이동
+9. git branch --merged
+-> 머지된 브랜치 확인
+10. git merge fix
+-> fix라는 브랜치를 머지
+11. git branch -d new-branch2
+-> new-branch2라는 브랜치를 삭제
+12. git push orign --delete new-branch2 
+-> 서버(깃 허브 등)에 있는 new-branch2라는 브랜치를 삭제
+13. git branch --move fix fix-welcome 
+-> fix라는 브랜치를 fix-welcome라는 브랜치로 이름을 변경
+14. git push --set-upstream origin fix-welcome
+-> 서버에 있는 브랜치 이름을 fix-welcome으로 변경
+15. git log master..test
+-> 마스터 브랜치와 테스트 브랜치 사이의 기록 확인
+16. git diff master..test
+-> 마스터 브랜치와 테스트 브랜치 사이의 변경 코드 확인
+
+## 머지(Merge)
+### fast-forward merge
+1. git merge feature-a
+-> 마스터 브랜치에 feature-a 브랜치를 머지
+-> 히스토리에 기록 되지 않음
+2. git branch -d feature-a
+-> 머지 후 feature-a 브랜치 삭제
+
+### git merge --no-ff 
+1. git merge --no-ff feature-c
+-> 마스터 브랜치에 feature-c 브랜치를 머지
+-> 히스토리에 기록 됨
+2. git branch -d feature-c
+-> 머지 후 feature-c 브랜치 삭제
+
+### three-way merge
+1. git merge feature-b
+-> 마스터 브랜치에서 feature-b 브랜치를 생성한 후 마스터 브랜치에서 커밋이 발생한 경우
+feature-b브랜치와 동시에 묶어주는 머지커밋이 만들어 짐
+
+### merge conflict
+1. 수동방법
+git merge feature
+-> 마스터 브랜치와 feature 브랜치의 파일 수정 내용이 같을 경우에 merge conflict 발생
+git merge --abort
+-> 머지 한 것을 취소
+open main.txt
+-> 파일을 수동으로 수정(HEAD 문자열과 feature문자열을 삭제)
+git add main.txt
+git merge --continue
+-> 수정된 파일 내용이 머지 됨
+
+2. vscode방법
+git config --global -e
+-> 에디트 창 열기
+[merge]
+tool = vscode
+[mergetool "vscode"]
+cmd = code --wait $MERGED 
+-> 에디트 창에 추가
+git config --global mergetool.keepbackup false
+-> .orig 충돌된 원본 파일을 저장하지 않도록 설정
+git merge feature
+-> 머지충돌 발생
+git mergetool 
+-> 수정할 파일의 옵션에서 선택
+git merge --continue 
+
+## Rebase
+-> three-way merge 상황에서 다른 개발자와 협업 하지 않고 나의 로컬에 있는 작업만 머지할 경우
+마스터 브랜치의 최신 버전과 rebase를 이용하여 fast-forward merge가 가능
+
+1. git checkout feature-b
+-> feature-b 브랜치로 이동
+2. feature-b> git rebase master
+-> feature-b 브랜치를 마스터 브랜치에  rebase 함
+3. git checkout master
+-> 마스터 브랜치로 이동
+4. master> git merge feature-b 
+-> feature-b 브랜치를 마스터 브랜치에 머지(히스토리 기록 없음)
+-> fast-forward merge 임
+
+### Rebase --onto
+-> 브랜치(예 profile)에서 파생된 브랜치(예 profile-ui)를 마스터 브랜치에 머지 할 때 사용
+
+1. master> git rebase --onto master profile profile-ui
+-> 마스터 브랜치에 profile-ui 브랜치를 rebase함
+2. master> git merge profile-ui
+-> 마스터 브랜치에 profile-ui 브랜치를 머지 함
+
+### Cherry pick
+-> 브랜치에서 특정한 커밋 부분만 마스터 브랜치에 머지 할 때
+
+1. master> git cherry-pick f2bq1n8(해당 해시코드)
+-> 마스터 브랜치로 해당 커밋 부분이 이동
+     
      
     
 
