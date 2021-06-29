@@ -174,7 +174,7 @@ git st
 16. git diff master..test
 -> 마스터 브랜치와 테스트 브랜치 사이의 변경 코드 확인
 
-## 머지(Merge)
+## 머지(erge)
 ### fast-forward merge
 1. git merge feature-a
 -> 마스터 브랜치에 feature-a 브랜치를 머지
