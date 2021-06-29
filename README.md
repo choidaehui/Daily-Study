@@ -222,7 +222,7 @@ git mergetool
 -> 수정할 파일의 옵션에서 선택
 git merge --continue 
 
-## Rebase
+## 리베이스(rebase)
 -> three-way merge 상황에서 다른 개발자와 협업 하지 않고 나의 로컬에 있는 작업만 머지할 경우
 마스터 브랜치의 최신 버전과 rebase를 이용하여 fast-forward merge가 가능
 
@@ -236,7 +236,7 @@ git merge --continue
 -> feature-b 브랜치를 마스터 브랜치에 머지(히스토리 기록 없음)
 -> fast-forward merge 임
 
-### Rebase --onto
+### rebase --onto
 -> 브랜치(예 profile)에서 파생된 브랜치(예 profile-ui)를 마스터 브랜치에 머지 할 때 사용
 
 1. master> git rebase --onto master profile profile-ui
@@ -244,7 +244,7 @@ git merge --continue
 2. master> git merge profile-ui
 -> 마스터 브랜치에 profile-ui 브랜치를 머지 함
 
-### Cherry pick
+### cherry pick
 -> 브랜치에서 특정한 커밋 부분만 마스터 브랜치에 머지 할 때
 
 1. master> git cherry-pick f2bq1n8(해당 해시코드)
