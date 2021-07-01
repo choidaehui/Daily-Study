@@ -249,6 +249,29 @@ git merge --continue
 
 1. master> git cherry-pick f2bq1n8(해당 해시코드)
 -> 마스터 브랜치로 해당 커밋 부분이 이동
+
+### stash stack
+-> 커밋하기 전 파일들을 임시저장하여 코드에 오류가 있는지 확인
+
+1. git stash push
+   git stash push -m "first try"
+-> git에서 트래킹하지 않는 unstaged files을 스태시 하지 않음
+2. git stash -u 
+-> git에서 트래팅하지 않는 unstaged files을 스태시 함
+3. git stash list
+-> 전체적인 스태시 목록 확인
+4. git stash show stash@{3}
+-> 해당 아이디 스태시 파일의 수정된 내용 확인
+5. git stash apply stash@{1}
+-> 해당 스태시 파일의 목록을 유지하면서 나의 워킹디렉토리에 적용
+6. git stash pop stash@{1}
+-> 해당 스태시 파일의 목록이 없어지고 나의 워킹디렉토리에 적용
+7. git stash drop stash@{1}
+-> 해당 스태시 파일 삭제
+8. git stash clear
+-> 전체 스태시 파일들 삭제
+9. git stash branch newbranch
+-> newbranch라는 브랜치를 만들어서 스태시 파일들을 저장
      
      
     
