@@ -244,13 +244,13 @@ git merge --continue
 2. master> git merge profile-ui
 -> 마스터 브랜치에 profile-ui 브랜치를 머지 함
 
-### cherry pick
+## cherry pick
 -> 브랜치에서 특정한 커밋 부분만 마스터 브랜치에 머지 할 때
 
 1. master> git cherry-pick f2bq1n8(해당 해시코드)
 -> 마스터 브랜치로 해당 커밋 부분이 이동
 
-### stash stack
+## stash stack
 -> 커밋하기 전 파일들을 임시저장하여 코드에 오류가 있는지 확인
 
 1. git stash push
