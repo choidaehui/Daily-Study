@@ -273,7 +273,56 @@ git merge --continue
 9. git stash branch newbranch
 -> newbranch라는 브랜치를 만들어서 스태시 파일들을 저장
      
-     
+ # Javascript 정리
+ ## 제어문
+ 1. if(true) {
+      document.write("if문의 조건을 만족하여 문장이 실행");
+      }
+ -> 웹 브라우저 화면에 문장이 나타남
+    if(false) {
+      document.write("if문의 조건을 만족하여 문장이 실행");
+      }
+ -> 웹 브라우저 화면에 문장이 나타나지 않음
+ 2. if...else문
+    var number = prompt("숫자를 입력하세요.");
+    if(number>0) {
+      alert("0이상의 수를 입력하세요.");
+      }
+    else {
+      document.write("입력한 숫자: "+number);
+      }
+ 3. 조건 연산자
+    var score = 85;
+    (score > 75)? alert("통과") : alert("실패");
+ -> 조건이 true이면 "통과" false이면 "실패"
+ ## falsy -> false로 인정하는 값
+ 1. 0
+ 2. ""
+ 3. NAN(not a number) -> 값을 할당하지 않고 연산할 경우
+ 4. undefined -> 값이 처음부터 변수에 할당되지 않음
+ 5. null -> 유효하지 않은 값
+ ## 3의 배수 검사기
+ 1. var userNumber = prompt("숫자를 입력하세요.");
+    if (userNumber != null) {.....}
+    else {....}
+ -> true가 될 경우가 많은 조건을 if문에 넣고 다른 조건은 else문에서 처리
+ 2. var userNumber = prompt("숫자를 입력하세요.");
+    var displayArea = document.queryselector('#result');
+    if(userNumber != null) {
+      if(userNumber % 3 === 0) {
+         displayArea.innerHTML = userNumber + "은 3의 배수 입니다.";
+         }
+      else {
+         displayArea.innerHTML = userNumber + "은 3의 배수가 아닙니다.";
+         }
+      }
+  -> <div id = "result"></div> 영역에 3의 배수인지 아닌지 확인한 후 결과값 표시   
+  ## switch문
+  -> 여러 조건 값 확인할 때 사용
+  
+    
+ 
+    
     
 
 
