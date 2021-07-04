@@ -386,7 +386,7 @@ git merge --continue
   -> 낙타표기법(camel case)
   -> 변수 이름의 첫 글자는 반드시 문자나 _(밑줄), $(달러)기호로 시작
   2. 템플릿 문자열
-  -> const originPrice = 24500;
+  -> const originPrice = 24500;    
   -> document.queryselector("#showResult").innerHTML = '원래 가격은 ${originPrice}원 입니다.';
     
       
