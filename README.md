@@ -1,4 +1,4 @@
-# daily-Study
+# dailyStudy
 HTML, CSS, Javascript
 
 # git & github 정리
@@ -319,6 +319,79 @@ git merge --continue
   -> <div id = "result"></div> 영역에 3의 배수인지 아닌지 확인한 후 결과값 표시   
   ## switch문
   -> 여러 조건 값 확인할 때 사용
+  1. var session = prompt("관심 분야를 선택해주세요. 1-마케팅, 2-개발, 3-디자인","1")
+  -> 기본 값으로 "1"지정
+  switch(session) {
+      case "1" : document.write("201호 강의실 입니다.")
+         break;
+      case "2" : document.write("202호 강의실 입니다.")
+         break;
+      case "3" : document.write("203호 강의실 입니다.")
+         break;
+      default: alert("잘못입력했습니다.");
+      }
+  -> 콜론 다음에 둘 이상의 명령을 실행한다면 중괄호 {   }로 묶음
+  -> 사용자가 입력한 값이 조건값과 일치하지 않을 때 실행할 명령은 default: 에 넣는다
+ ## for문
+ 1. 1부터 100까지 더하는 for문
+ var sum = 0;
+ for(var i = 1; i < 101; i++) {
+      sum += i;
+   }
+ ## for문 중첩사용(구구단)
+ 1. for(var i = 2; i<=9; i++) {
+      document.write(i+"단");
+      for(var j=1; j<=9; j++) {
+         document.write(i+"*"+j+"="+i*j+"<br>");
+         }
+     }
+ ## while문 사용(팩토리얼 계산기)
+ 1. var i = 0
+    while(i<10) {
+      document.write('반복조건이 true이면 반복합니다.<br>');
+      i += 1;
+      }
+ 2. var i = 0
+    do {
+         document.write('반복조건이 true이면 반복합니다.<br>');
+         i +=1;
+         } 
+    while(i<10);
+ 3. var n = prompt("숫자를 입력하세요.");
+    var nFact = 1;
+    var i = 2;
+    while(i <= n) {
+     nFact *= i;
+     i++;
+     }
+    document.write(n+"i="+nFact);
+ 
+ ## 반복문,continue문, if문 활용(10까지 짝수 더하기 프로그램)
+ 1. var n = 10;
+    var sum = 0;
+    
+    for(var i = 0; i <=n; i++) {
+     if(i % 2 === 1) {
+      continue;
+      -> 반복문장을 건너뛰고 반복문의 맨 앞으로 돌아감
+      }
+      sum += i;
+      document.write(i+"---------------"+sum+"<br>");
+    }
+    
+  ## 변수
+  1. 표기법
+  birthYear, currentYear
+  -> 첫번째 단어는 소문자, 두번째 단어부터는 대문자로 시작
+  -> 낙타표기법(camel case)
+  -> 변수 이름의 첫 글자는 반드시 문자나 _(밑줄), $(달러)기호로 시작
+  2. 템플릿 문자열
+  -> const originPrice = 24500;
+  -> document.queryselector("#showResult").innerHTML = '원래 가격은 ${originPrice}원 입니다.';
+    
+      
+ 
+  
   
     
  
