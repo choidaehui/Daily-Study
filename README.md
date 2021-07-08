@@ -404,11 +404,11 @@ git merge --continue
   -> 재할당 불가   
   -> 상수처럼 사용하고 처음 선언시 반드시 값을 대입   
   >예)if(true) {   
-  >>const a= 10;
-  >>const a = 15; -> 사용불가   
-  >>      a = 5; -> 사용불가
-  >>      }
-  console.log(a); -> 접근불가   
+  >>const a= 10;    
+  >>const a = 15; -> 사용불가      
+  >>      a = 5; -> 사용불가   
+  >>      }      
+  >console.log(a); -> 접근불가   
   
   
       
