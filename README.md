@@ -525,43 +525,44 @@ git merge --continue
   ## 이벤트 다루기   
   이벤트: 웹브라우저나 사용자가 행하는 어떤 동작으로 주로 마우스나 키보드를 사용할 때, 웹문서를 불러올 때, 폼에 내용을 입력할 때 주로 발생      
   이벤트 처리기 = 이벤트 핸들러: 이벤트와 이벤트 처리 함수를 연결해 주는 것으로 이벤트 이름 앞에 on을 붙임   
+``` javascript  
   예)function showDetail() {    
-  > document.queryselector('#desc').style.display = "block";   
-  > ->상세 설명내용을 화면에 표시   
-  > document.queryselector('#open').style.display = "none";   
-  > ->상세 설명보기 버튼을 감춤   
+   document.queryselector('#desc').style.display = "block";   
+   ->상세 설명내용을 화면에 표시   
+   document.queryselector('#open').style.display = "none";   
+   ->상세 설명보기 버튼을 감춤   
      
   function hideDetail() {   
-  > document.queryselector('#desc').style.display = "none";   
-  > document.queryselector('#open').style.display = "block";   
+   document.queryselector('#desc').style.display = "none";   
+   document.queryselector('#open').style.display = "block";   
      
-  <div id="item">   
-   > <img src = "images/flower.jpg" alt="">   
-   > <button class="over" id="open" onclick="showDetail()">   
-   > 상세설명보기</button>   
-  </div>   
+   <div id="item">   
+    <img src = "images/flower.jpg" alt="">   
+    <button class="over" id="open" onclick="showDetail()">   
+    상세설명보기</button>   
+   </div>   
      
   <div id="desc" class="detail">   
-   > <h4>상세설명</h4>   
-   > <p>상세설명내용</p>   
-   > <button id="close" onclick="hideDetail()">   
-   > 상세설명닫기</button>   
-   </div>   
-      
+    <h4>상세설명</h4>   
+    <p>상세설명내용</p>   
+   <button id="close" onclick="hideDetail()">   
+    상세설명닫기</button>   
+  </div>   
+   
    ## 여러 이벤트 처리기 연결하기   
    <img src = "images/flower.jpg" alt="" id="cover">   
       
    var coverImage = document.queryselector("#cover");   
    coverImage.onclick = function() {   
-   > alert('눌렀습니다.');   
-   > };   
+    alert('눌렀습니다.');   
+    };   
    coverImage.onmouseover = function() {     
-   > coverImage.style.border = "5px black solid";   
-   > };   
+    coverImage.style.border = "5px black solid";   
+    };   
    coverImage.onmouseout = functon() {   
-   > coverImage.style.border = "";   
-   > };   
-   
+    coverImage.style.border = "";   
+    };   
+```
     
     
 
