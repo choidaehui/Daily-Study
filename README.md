@@ -453,22 +453,115 @@ git merge --continue
   >->a=10, b=20, c=10   
   >multiple(30)   
   >->결과값은 160   
-  >->a=30, b=5, c=10   
+  >->a=30, b=5, c=10       
+
+  ## return문 사용   
+  -> 함수를 실행한 후 그 결과 값을 함수 밖으로 넘길 때 사용하고 반환위치는 함수를 호출한 위치   
+  예) 1. var num1 = parseInt(prompt("첫 번째 숫자는?"));   
+      2. var num2 = parseInt(prompt("두 번째 숫자는?"));    
+      3. var result = 8. addNumber(num1, num2);   
+      4. alert("두 수를 더한 값은 " +result+" 입니다.");   
+      5. function addNumber(a,b) {    
+      6.>var sum = a + b;   
+      7.>>return sum;
+      >>>>}   
+      실행순서:1->2->8->5->6->7->3->4   
+      ---->6,7번을 return a + b;로 사용 가능     
+          
+  ## 변수의 적용범위
+     스코프(scope): 변수를 선언하고 사용할 때 변수가 적용되는 범위   
+     지역변수=로컬변수: 한 함수 안에서만 사용할 수 있는 변수      
+     전역변수=글로벌변수: 스크립트 소스 전체에서 사용할 수 있는 변수    
+     예) var myVar = 100; -> 전역변수 선언    
+     >test();    
+     >document.write("myVar is"+myVar);   
+     function test() {     
+     >var myVar = 50; -> 지역변수 선언   
+     >}   
+     >->지역변수는 전역변수에 영향을 주지 않는다.   
+     >->myVar의 값은 100   
+     >->var myVar = 50이 myVar = 50일때는 전역변수가 되어 myVar의 값이 50이 된다.   
+     블록변수: let예약어를 사용해 변수를 선언하고 변수를 선언한 블록 (중괄호({})로 묶은 부분)에서만 유효   
+     익명함수: 함수 자체가 식이기 때문에 변수에 할당할 수 있고, 다른 함수의 매개변수로 사용가능     
+     예)var add = function(a,b) {   
+     >return a + b;   
+     >>var sum = add(10, 20);   
+     >>sum   
+     >>->30   
+     즉시 실행함수: 함수를 정의함과 동시에 실행하는 함수고 소스 끝에 세미콜론(;)을 붙임   
+     예)(function() {   
+     ......     
+     })();   
+     >(function() {    
+     ......     
+     }());    
+     ->변수에 할당할 수 있고, 함수에서 반환하는 값을 변수에 할당할 수 있음   
+     예)var result = (function(a,b) {   
+     >return a + b;   
+     >}(10,20));   
+     console.log(result);   
+     -> 30      
+         
+  ## 함수의 화살표 표기법(ES6버전부터)   
+  >var hi = function() {     
+  >>return "안녕하세요?";   
+  >>}   
+  >hi();   
+  >= let hi = () => "안녕하세요?";   
+
+  >var greet = function(name) {     
+  >>return name+" 님, 안녕하세요?";
+  >greet("경희");
+  >= let greet = name => '${name}님, 안녕하세요?';   
+  >greet("경희");   
+      
+  >var add = function(a, b) {    
+  >>return a + b;   
+  >>}   
+  >add(10, 20)   
+  >= let add = (a, b) => a + b;   
+  >add(10, 20)     
+     
+  ## 이벤트 다루기   
+  이벤트: 웹브라우저나 사용자가 행하는 어떤 동작으로 주로 마우스나 키보드를 사용할 때, 웹문서를 불러올 때, 폼에 내용을 입력할 때 주로 발생      
+  이벤트 처리기 = 이벤트 핸들러: 이벤트와 이벤트 처리 함수를 연결해 주는 것으로 이벤트 이름 앞에 on을 붙임   
+  예)function showDetail() {    
+  >document.queryselector('#desc').style.display = "block";   
+  >->상세 설명내용을 화면에 표시   
+  >document.queryselector('#open').style.display = "none";   
+  >->상세 설명보기 버튼을 감춤   
+     
+  function hideDetail() {   
+  >document.queryselector('#desc').style.display = "none";   
+  >document.queryselector('#open').style.display = "block";   
+     
+  <div id="item">   
+   ><img src = "images/flower.jpg" alt="">   
+   ><button class="over" id="open" onclick="showDetail()">   
+   상세설명보기</button>   
+  </div>   
+     
+  <div id="desc" class="detail">   
+   ><h4>상세설명</h4>   
+   ><p>상세설명내용</p>   
+   ><button id="close" onclick="hideDetail()">   
+   상세설명닫기</button>   
+   </div>   
+      
+   ## 여러 이벤트 처리기 연결하기   
+   <img src = "images/flower.jpg" alt="" id="cover">   
+      
+   var coverImage = document.queryselector("#cover");   
+   coverImage.onclick = function() {   
+   >alert('눌렀습니다.');   
+   >};   
+   coverImage.onmouseover = function() {     
+   >coverImage.style.border = "5px black solid";   
+   >};   
+   coverImage.onmouseout = functon() {   
+   >coverImage.style.border = "";   
+   >};   
    
- 
-  
-  
-      
-  
-  
-  
-    
-      
- 
-  
-  
-    
- 
     
     
 
