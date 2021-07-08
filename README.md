@@ -388,6 +388,14 @@ git merge --continue
   2. 템플릿 문자열      
   -> const originPrice = 24500;    
   -> document.queryselector("#showResult").innerHTML = '원래 가격은 ${originPrice}원 입니다.';
+  
+  ## 변수를 선언할 때 사용
+  1. let      
+  -> 재선언 불가      
+  -> 재할당 가능   
+  
+  
+  
     
       
  
