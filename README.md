@@ -408,7 +408,54 @@ git merge --continue
   >>const a = 15; -> 사용불가      
   >>      a = 5; -> 사용불가   
   >>      }      
-  >console.log(a); -> 접근불가   
+  >console.log(a); -> 접근불가 
+  
+  ## 함수   
+  -> 특정 기능을 수행하는 소스코드를 따로 묶어놓은 덩어리   
+  >function addNumber(){   
+  >>var sum = 10+20;   
+  >>console.log(sum);   
+  >>}   
+  >>->함수 선언   
+  >>addNumber()   
+  >>->함수 호출   
+  
+  ## 이벤트   
+  -> 웹문서에서 버튼을 누르거나 이미지 위에 마우스 포인터를 올려놓는 등의 사건   
+  예)1. add.html 파일 열기   
+     2. <button onclick = "addNumber()">덧셈계산기</button>   
+     3. add.js파일에 앞에 있는 addNumber()함수 소스를 작성하고 저장    
+     4. add.html파일에 add.js파일을 연결   
+     ><script src = "js/add.js"></script>   
+     
+  ## 매개변수와 인수   
+  예) var num1 = paseInt(prompt("첫 번째 숫자는?"));   
+  >   var num2 = paseInt(prompt("두 번째 숫자는?));   
+  >   addNumber(num1, num2)   
+  >   -> addNumber()함수의 num1, num2는 인수 = 전달인자 임    
+
+  > function addNumber(a,b) {     
+  > >var sum = a + b;   
+  > >alert("두 수를 더한 값은 "+sum+"입니다.");   
+  > >}   
+  > >-> addNumber()함수의 a,b는 매개변수 = 인자 임   
+      
+  ## 매개변수 기본값 지정   
+  예)function multiple(a, b=5, c= 10) {   
+  >>return a*b+c;
+  >}   
+  >-> b=5, c=10로 기본값 지정   
+  >multiple(5, 10, 20)   
+  >->결과값은 70   
+  >->a=5, b=10=, c=20   
+  >multiple(10, 20)   
+  >->결과값은 210   
+  >->a=10, b=20, c=10   
+  >multiple(30)   
+  >->결과값은 160   
+  >->a=30, b=5, c=10   
+   
+ 
   
   
       
