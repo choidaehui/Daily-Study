@@ -394,10 +394,10 @@ git merge --continue
   -> 재선언 불가      
   -> 재할당 가능    
   예)if(true) {   
-      >let a = 10;     
-      >let a = 15; -> 사용불가   
-      >a = 5; -> 사용가능   
-      >}   
+      >>let a = 10;     
+      >>let a = 15; -> 사용불가   
+      >>a = 5; -> 사용가능   
+      >>}   
       console.log(a); -> 접근불가   
       
   
