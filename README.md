@@ -469,38 +469,38 @@ git merge --continue
       ---->6,7번을 return a + b;로 사용 가능     
           
   ## 변수의 적용범위   
-   스코프(scope): 변수를 선언하고 사용할 때 변수가 적용되는 범위   
-     지역변수=로컬변수: 한 함수 안에서만 사용할 수 있는 변수      
-     전역변수=글로벌변수: 스크립트 소스 전체에서 사용할 수 있는 변수    
-     예) var myVar = 100; -> 전역변수 선언    
-     >test();    
-     >document.write("myVar is"+myVar);   
-     function test() {     
-     >var myVar = 50; -> 지역변수 선언   
-     >}   
-     >->지역변수는 전역변수에 영향을 주지 않는다.   
-     >->myVar의 값은 100   
-     >->var myVar = 50이 myVar = 50일때는 전역변수가 되어 myVar의 값이 50이 된다.   
-     블록변수: let예약어를 사용해 변수를 선언하고 변수를 선언한 블록 (중괄호({})로 묶은 부분)에서만 유효   
-     익명함수: 함수 자체가 식이기 때문에 변수에 할당할 수 있고, 다른 함수의 매개변수로 사용가능     
-     예)var add = function(a,b) {   
-     >return a + b;   
-     >>var sum = add(10, 20);   
-     >>sum   
-     >>->30   
-     즉시 실행함수: 함수를 정의함과 동시에 실행하는 함수고 소스 끝에 세미콜론(;)을 붙임   
-     예)(function() {   
-     ......     
-     })();   
-     >(function() {    
-     ......     
-     }());    
-     ->변수에 할당할 수 있고, 함수에서 반환하는 값을 변수에 할당할 수 있음   
-     예)var result = (function(a,b) {   
-     >return a + b;   
-     >}(10,20));   
-     console.log(result);   
-     -> 30      
+  스코프(scope): 변수를 선언하고 사용할 때 변수가 적용되는 범위   
+  지역변수=로컬변수: 한 함수 안에서만 사용할 수 있는 변수      
+  전역변수=글로벌변수: 스크립트 소스 전체에서 사용할 수 있는 변수    
+  예) var myVar = 100; -> 전역변수 선언    
+  >test();    
+  >document.write("myVar is"+myVar);   
+  function test() {     
+  >var myVar = 50; -> 지역변수 선언   
+  >}   
+  >->지역변수는 전역변수에 영향을 주지 않는다.   
+  >->myVar의 값은 100   
+  >->var myVar = 50이 myVar = 50일때는 전역변수가 되어 myVar의 값이 50이 된다.   
+  블록변수: let예약어를 사용해 변수를 선언하고 변수를 선언한 블록 (중괄호({})로 묶은 부분)에서만 유효   
+  익명함수: 함수 자체가 식이기 때문에 변수에 할당할 수 있고, 다른 함수의 매개변수로 사용가능     
+  예)var add = function(a,b) {  
+  >return a + b;   
+  >>var sum = add(10, 20);  
+  >>sum   
+  >>->30   
+  즉시 실행함수: 함수를 정의함과 동시에 실행하는 함수고 소스 끝에 세미콜론(;)을 붙임   
+  예)(function() {   
+  ......     
+  })();   
+  >(function() {    
+  ......     
+  }());    
+  ->변수에 할당할 수 있고, 함수에서 반환하는 값을 변수에 할당할 수 있음   
+  예)var result = (function(a,b) {   
+  >return a + b;   
+  >}(10,20));   
+  console.log(result);   
+  -> 30      
          
   ## 함수의 화살표 표기법(ES6버전부터)   
   > var hi = function() {     
@@ -538,14 +538,14 @@ git merge --continue
   <div id="item">   
    > <img src = "images/flower.jpg" alt="">   
    > <button class="over" id="open" onclick="showDetail()">   
-   상세설명보기</button>   
+   > 상세설명보기</button>   
   </div>   
      
   <div id="desc" class="detail">   
    > <h4>상세설명</h4>   
    > <p>상세설명내용</p>   
    > <button id="close" onclick="hideDetail()">   
-   상세설명닫기</button>   
+   > 상세설명닫기</button>   
    </div>   
       
    ## 여러 이벤트 처리기 연결하기   
