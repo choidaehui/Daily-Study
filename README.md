@@ -392,7 +392,14 @@ git merge --continue
   ## 변수를 선언할 때 사용
   1. let      
   -> 재선언 불가      
-  -> 재할당 가능   
+  -> 재할당 가능    
+  예)if(true) {   
+      let a = 10;     
+      let a = 15; -> 사용불가   
+      a = 5; -> 사용가능   
+      }   
+      console.log(a); -> 접근불가   
+      
   
   
   
