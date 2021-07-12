@@ -645,17 +645,21 @@ git merge --continue
          -> 대문자 T를 추가한 후 시간을 입력   
          -> 특정 날짜를 저장한 Date객체 생성   
          -> ISO형식(YYYY-MM-DDTHH:MM:SS)   
+            
          2. 날짜/시간 정보를 가져오는 함수   
          -> getMonth()함수와 getDay()함수는 결과값이 0부터 시작   
+            
          ㄱ. getDay()    
          -> 날짜 정보에서 요일(Day)정보를 가져옴   
          -> 0:일요일에서 6:토요일   
          ㄴ. getTime()   
          -> 1970년 1월 1일 이후의 시간을 밀리초로 표시    
-         -> 밀리초는 1/1000초     
+         -> 밀리초는 1/1000초   
+              
          3. 오늘 날짜로 부터 50일이 지난 후의 날짜를 계산하는 방법        
          var now = new Date();    
-         now.setDate(now.getDate()+50)   
+         now.setDate(now.getDate()+50)    
+            
          4. 며칠 만났는지 계산하는 방법    
          var now = new Date();   
          -> 오늘 날짜 정보를 Date객체의 인스턴스 now객체로 만듦   
@@ -663,6 +667,37 @@ git merge --continue
          -> 처음 만난 날의 날짜 정보를 firstDay 객체로 만듦   
          var toNow = now.getTime();   
          -> 오늘 날짜를 밀리초로 바꿈   
+         var toFirst = firstDAy.getTime();   
+         -> 처음 만난 날을 밀리초로 바꿈   
+         var passedTime = toNow - toFirst;   
+         -> 처음 만난 날과 오늘 사이의 차이(밀리 초 값)   
+         var passedDay = Math.round(passedTime/(1000*60*60*24));    
+         -> 밀리초를 날짜수로 변환한 후 반올림   
+         document.queryselector("#accent").innerText = passedDay+"일"   
+         -> #accent 영역에 표시   
+             
+         5. 100일 후 날짜 계산하는 방법   
+         var future = toFirst + 100 * (1000*60*60*24);   
+         -> 처음 만난 날에 100일을 더함   
+         var someday = new Date(future);   
+         -> future값을 사용해 Date객체의 인스턴스를 만듦    
+         var year = someday.getFullyear();   
+         var month = someday.getMonth()+1;   
+         var date = someday.getDate();   
+         document.queryselector('#date100").innerText = year+"년"+month+"월"+date+"일";   
+            
+         6. calcDate()함수로 기념일 계산하는 방법   
+         function calcDate(days) {   
+            var future = toFirst + days * (1000*60*60*24);    
+            var someday = new Date(future);   
+            var year = someday.getFullyear();   
+            var month = someday.getMonth()+1;   
+            var date = someday.getDate();   
+            document.queryselector('#date"+days).innertext = year+"년"+month+"월"+date+"일";    
+            }     
+            
+            
+         
    
    
 
