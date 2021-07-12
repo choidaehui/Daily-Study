@@ -641,7 +641,7 @@ git merge --continue
           var bookList = [html, youtube, python];   
           -> 배열에 객체를 담을 수 있음   
 ## 기념일 계산기 
-       1. new Date("2021-07-11T18:00:00")   
+         1. new Date("2021-07-11T18:00:00")   
          -> 대문자 T를 추가한 후 시간을 입력   
          -> 특정 날짜를 저장한 Date객체 생성   
          -> ISO형식(YYYY-MM-DDTHH:MM:SS)   
