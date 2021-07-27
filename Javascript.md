@@ -419,5 +419,137 @@
             var month = someday.getMonth()+1;   
             var date = someday.getDate();   
             document.queryselector('#date"+days).innertext = year+"년"+month+"월"+date+"일";    
-            }     
+            } 
+## 배열
+        -> 여러 개의 항목을 하나의 변수에 저장   
+        예) var myArray = new Array();   
+        -> Array객체의 인스턴스를 만들기   
+        var numbers = ["one","two","three","four"];   
+        -> 리터럴을 사용한 배열   
+        var numbers = new Array("one","two","three","four");   
+        -> Array객체를 사용한 배열   
+             
+        1. 둘 이상의 배열을 연결하는 concat()함수   
+        -> 기존의 배열에 또 다른 배열이나 값을 합쳐서 새로운 배열을 만드는 함수   
+        예) var nums = ["!","2","3"];   
+        var chars = ["a","b","c","d"];   
+        nums.concat(chars)   
+        -> nums배열에 chars배열 연결   
+        -> ["1","2","3","a","b","c","d"]   
+           
+        2. 배열요소를 연결하는 join()함수   
+        -> 배열요소를 연결하는 함수로 함수에서 구분기호를 정하지 않으면 쉼표(,)로 요소를 구분   
+        예) nums.join()   
+        -> 구분기호 없이 연결   
+        "1,2,3"   
+        nums.join("-")   
+        -> 구분기호("-")를 사용해 연결   
+        "1-2-3"  
+        myColor = ["red","green","blue"];   
+        myColor.join("+")   
+        colorString = "red + green + blue";   
+           
+        3. push()함수   
+        -> 배열의 맨 끝에 요소를 추가   
+        var nums = ["1","2","3"]   
+        nums.push("4","5")   
+        -> nums배열 맨 끝에 "4"와"5"요소 추가   
+        nums   
+        ["1","2","3","4","5"]   
+           
+        4. unshift()함수   
+        -> 배열의 맨 앞에 추가   
+        예) nums.unshift("0")   
+        -> nums배열 맨 앞에 "0" 요소 추가   
+        nums   
+        -> ["0","1","2","3","4","5"]   
+            
+        5. pop()함수   
+        -> Array객체에서 맨 뒤에 있는 요소를 추출할 때   
+        -> 배열에서 요소를 추출하면 해당 요소가 배열에서 빠지면서 배열이 수정    
+        예) var study = ["html","css","javascript"]   
+        study.pop()   
+        "javascript"   
+        study   
+        ["html","css"]   
+           
+        6. shift()함수   
+        -> 배열의 첫 요소 반환   
+        -> 해당 요소가 배열에서 빠지면서 배열이 수정   
+        예) var js = ["es6+","node","react","angular","vue"]  
+        js.shift()   
+        "es6+"   
+           
+        7. splice()함수   
+        -> 괄호 안에 들어 있는 인수에 따라 일정구간의 요소를 삭제하고 새로운 요소를 추가   
+        -> 삭제한 구간의 요소들로 이루어진 새로운 배열이 결과값으로 표시   
+        예) var numbers = [0,1,2,3,4,5]   
+        numbers.splice(2)   
+        -> 인덱스2(세번째 요소)이후 끝까지 삭제   
+        [2,3,4,5]   
+        -> 삭제된 요소로 이루어진 배열   
+        numbers   
+        [0,1]   
+        -> 수정된 원래 배열   
+           
+        ㄱ. splice() 함수에 인수가 2개일 경우   
+        -> 첫 번째 인수는 인덱스 값이고, 두 번째 인수는 삭제할 개수   
+        예) var study = ["html","css","web","jquery"]   
+        study.splice(2,1)   
+        -> 인덱스 2에서 한 개 삭제   
+        ["web"]   
+        -> 삭제된 요소로 이루어진 배열   
+        study   
+        ["html","css","jquery"]   
+        -> 수정된 원래 배열   
+           
+        ㄴ. splice()함수에 인수가 3개일 경우   
+        -> 세 번째 인수는 앞서 삭제한 위치에 새로 추가할 요소를 지정   
+        예) study.splice(2,1,"js")   
+        ["jquery"]   
+        -> 인덱스 2에서 1개 삭제   
+        study   
+        ["html","css","js"]   
+        -> 삭제한 자리에서 새로운 요소를 추가   
+        var chars = ["a","e","f"]   
+        chars.splice(1,0,"b","c","d")
+        []   
+        chars   
+        ["a","b","c","d","e","f"]   
+        ->새로운 요소 3개 추가   
+           
+        8. slice()함수   
+        -> 원하는 위치의 요소들을 추출   
+        예) var colors = ["red","green","blue","white","black"]   
+        colors.slice(2)   
+        ["blue","white","black"]   
+        -> 인덱스 2부터 끝까지 추출   
+        colors   
+        ["red","green","blue","white","black"]   
+        -> 원래 배열은 변경되지 않음   
+        var colors2 = colors.slice(1,4)   
+        colors2   
+        ["green","blue","white"]   
+        -> 두 번째 요소(인덱스1)부터 네번째 요소(인덱스3)까지 추출해서 새로운 배열 colors2생성   
+        colors   
+        ["red","green","blue","white","black"]   
+        ->원래 배열은 변경되지 않음   
+           
+# 여행준비물 점검 프로그램 만들기   
+        var itemList = new Array();   
+        =var itemList = [];   
+        var addBtn = document.querySelector("#add");   
+        -> #add인 요소를 가져와 addBtn으로 저장    
+        addBtn.addEventListener("click",addList);   
+        -> addBtn을 클릭하면 addList함수 실행   
+        function addList() {   
+            var item = document.querySelector("#item").value;   
+            -> 텍스트 필드 내용을 가져옴   
+            if(item != null) {   
+                   itemList.push(item);   
+                   -> itemList배열 끝에 item 변수 값 추가   
+                   
+           
+       
+        
             
