@@ -547,7 +547,8 @@
             -> 텍스트 필드 내용을 가져옴   
             if(item != null) {   
                    itemList.push(item);   
-                   -> itemList배열 끝에 item 변수 값 추가   
+                   -> itemList배열 끝에 item 변수 값 추가    
+                   
                    
            
        
