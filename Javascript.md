@@ -547,7 +547,126 @@
             -> 텍스트 필드 내용을 가져옴   
             if(item != null) {   
                    itemList.push(item);   
-                   -> itemList배열 끝에 item 변수 값 추가    
+                   -> itemList배열 끝에 item 변수 값 추가   
+                   document.querySelector("#item").value = "";   
+                   -> id = "item"인 요소 값을 지움   
+                   document.querySelector("#item").focus();   
+                   -> 텍스트 필드에 focus()함수 적용   
+                   }   
+        function showList() {   
+            var list = "<ul>";   
+            -> 목록을 시작하는 <ul>태그 저장   
+            for(var i=0; i<itemList.length; i++) {   
+               list += "<li>" + itemList[i] + "</li>";   
+               -> 각 요소를 <li> ~ </li>로 묶음   
+               }   
+               list += "</ul>";   
+               document.querySelector("#itemList).innerHTML = list;   
+               -> list 변수값 표시   
+               }   
+# 챙긴 준비물 목록에서 지우기   
+        function showList() {      
+             ... ...
+             for(var i=0; i<itemList.length; i++) {    
+                list += "<li>" + itemList[i] + "<span class='close' id="+i+"> X </span></li>";   
+                var remove = document.querySelectorAll(".close");   
+                -> 삭제 버튼을 변수로 저장. 배열형태가 됨   
+                }   
+                
+             for(var i=0; i<remove.length; i++) {   
+                  remove[i].addEventListener("click",removeList);   
+                  }   
+                -> 요소를 클릭하면 removeList()실행   
+        function removeList() {   
+             console.log(this);   
+               -> this 값을 콘솔 창에 표시   
+             var id = this.getAttribute("id");   
+             itemList.splice(id,1);   
+               -> itemList 배열에서 인덱스 값이 id인 요소 1개 삭제   
+             showList();   
+               -> 변경된 itemList 배열을 다시 화면에 표시   
+             }   
+# 문서객체모델(DOM)   
+        -> 웹 문서의 모든 요소를 자바스크립트를 이용하여 조작할 수 있도록 객체를 사용해 문서를 해석하는 방법   
+        1. DOM을 사용해 상세설명 가리기   
+           document.querySelector('#detail h3').style.visibility = 'hidden'   
+           document.querySelector('#detail p').style.visibility = 'hidden'   
+        2. DOM 트리   
+           ㄱ. 웹 문서의 태그는 요소(element)노드로 표현   
+           ㄴ. 태그가 품고 있는 텍스트는 해당 요소 노드(태그)의 자식 노드인 텍스트(Text)노드로 표현   
+           ㄷ. 태그의 속성은 모두 해당 요소 노드(태그)의 자식 노드인 속성(Attribute)노드로 표현   
+           ㄹ. 주석은 주석(Comment)노드로 표현   
+             -> 웹 문서를 놓고 DOM 트리를 상상하면 자바스크립트로 원하는 요소에 어떻게 접근할 지 쉽게 생각 가능   
+        3. DOM 요소에 접근하기   
+          -> DOM 요소에 접근할 때는 주로 선택자를 사용   
+          ㄱ. DOM 요소를 id선택자로 접근하는 함수(getElementById())   
+            예) document.getElementById("heading").onclick = function() {   
+                    this.style.fontsize = "5em"   
+                  }   
+                -> id가 heading인 제목을 누르면 접근한 요소의 글자 크기가 커짐   
+            예) document.getElementById("desc")   
+                -> <div id = "desc"> 태그의 텍스트 부분에 접근    
+          ㄴ. DOM 요소를 class 값으로 찾아내는 함수(getElementsByClassName())   
+               -> class 선택자는 id 선택자와 다르게 웹 문서 안에서 여러 번 사용 가능    
+               -> 2개 이상의 웹 요소에 접근   
+               예) document.getElementsByClassName("accent")   
+               -> class 값이 accent인 요소가 배열 형태로 저장됨   
+               -> class 값이 accent인 웹 요소들에 접근   
+               예) document.getElementsByClassName("accent")[0]   
+               -> 배열의 인덱스를 사용하여 첫 번째 요소에 접근   
+               예) document.getElementsByClassName("accent")[0].style.textDecoration = "underline"   
+               <span class = "accent">게뎁농장</span>   
+               -> '게뎁농장'텍스트에 밑줄이 생성 됨  
+          ㄷ. DOM 요소를 태그 이름으로 찾아내는 함수(getElementsByTagName())   
+               -> id나 class 선택자가 없는 DOM 요소에  태그 이름을 찾아 DOM 요소에 접근   
+               -> 여러 DOM 요소들에 접근   
+               예) document.getElementsByTagName("h2")[0].style.backgroundColor = "#eee"   
+               -> h2 태그 이름으로 접근한 DOM요소 중 첫 번째 요소의 배경색을 바꿈   
+          ㄹ. DOM 요소를 id, class, 태그 이름으로 찾아내는 함수(querySelector(), querySelectorAll())   
+               -> id 값 'container'인 DOM 요소에 접근하는 방법 비교   
+               = document.getElementById("container")   
+               = document.querySelector("#container")   
+               예) class 값이 'accent'인 DOM 요소들에 접근   
+               = document.querySelectorAll(".accent")   
+               예) document.querySelectorAll(".accent")[1].style.backgroundColor = "yellow"   
+               -> class 값이 'accent'인 두 번째 요소에 접근한 다음 요소의 배경색을 노란색으로 바꿈   
+               -> 웹 요소 정도만 변경한다면 getElementById(), getElementsByClassName(), getElementsByTagName()함수를 사용하고,   
+               웹 요소 뿐만 아니라 요소의 텍스트나 속성을 변경하거나 새로운 노드를 추가하고 싶다면 querySelector(), querySelectorAll() 함수를 사용    
+          ㅁ.      
+                
+                
+        
+             
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+                
                    
                    
            
