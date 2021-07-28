@@ -632,7 +632,21 @@
                -> class 값이 'accent'인 두 번째 요소에 접근한 다음 요소의 배경색을 노란색으로 바꿈   
                -> 웹 요소 정도만 변경한다면 getElementById(), getElementsByClassName(), getElementsByTagName()함수를 사용하고,   
                웹 요소 뿐만 아니라 요소의 텍스트나 속성을 변경하거나 새로운 노드를 추가하고 싶다면 querySelector(), querySelectorAll() 함수를 사용    
-          ㅁ.      
+          ㅁ.  HTML 태그 속성을 가져오거나 수정하는 함수(getAttribute(), setAttribute())   
+               -> 선택한 상품 이미지를 특정 위치에 표시   
+                 a. 이미지 요소에 접근하는 것   
+                    -> querySelector()함수 사용   
+                 b. 속성에 접근   
+                    -> getAttribute()함수 사용   
+                 c. 접근한 속성 값 변경   
+                    -> setAttribute()함수 사용   
+                 예) <div id="prod-img">   
+                       <img src="images/coffee-pink.jpg" alt="에디오피아 게뎁">   
+                     </div>   
+                 예) document.querySelector("#prod-img>img").setAttribte("src","images/coffee-blue.jpg")   
+                    -> 화면에 표시되는 그림이 변경 됨   
+           ㅂ. 사용자가 누른 작은 이미지를 큰 이미지 위치에 표시   
+               
                 
                 
         
