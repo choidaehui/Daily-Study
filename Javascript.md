@@ -1,279 +1,4 @@
-# dailyStudy
-HTML, CSS, Javascript
-
-# git & github 정리
-
-## 기본적인 명령어
-
-cmder.net -> 깃 터미널(windows용)
-형식) git + 명령어 + -옵션
-
-git config --global -e 
--> 깃 설정 파일 열기
-
-gti config --globla user.name "DaeHui"
-확인) git config user.name
-
-git congfig --global core.autocrlf true 
--> 줄 바꿈 적용
-
-git init
--> 깃 초기화
-git -rf .git 
--> 깃 삭제
-
-git status 
-git config --global alias.st status 
-git st
--> 단축키 만들기 예
-
-1. git add a.txt
--> a.txt 파일을 staged files로 옮김 (깃이 트레킹 함)
-
-2. git rm --cached * 
--> 모든 파일들이 unstaged files로 옮겨짐 (깃이 트래킹 하지 않음)
-
-3. git add * 
--> 디렉토리의 모든 파일이 staged files로 옮겨짐
-
-4. git add *.CSS
--> 디렉토리의 .CSS 파일만 staged files로 옮겨짐
-
-5. echo *.log > .gitignore
--> .log 파일은 깃에서 트래킹 하지 않음
-
-참고) ctrl + k
--> 터미널창 clear
-
-6. git status -s 
--> 현재 상태 간단하게 확인
-
-7. git diff
--> 파일 변경 사항을 비교할 때
-   git diff --staged
-   git diff --cached
--> staged files에 있는 파일들만 변경사항을 비교할 때
-
-8. git config --global -e
-   [diff]
-   tool = vscode
-   [difftool "vscode"]
-   cmd = code --wait --diff $LOCAL $REMOTE
-   git difftool
-   git difftool --staged
--> vscode에서 파일들의 변경사항을 확인 가능
-
-9. git commit
-   git commit -m "second commit"
-   
-   git commit -am "third commit"
--> staged files와 unstaged files 모두 메시지와 함께 커밋
--> 커밋 메시지에 맞게 커밋 내용이 포함 되어야 함
-
-10. git rm c.txt
--> 삭제된 c.txt파일이 staged files에 적용
-
-11. git mv style.css f.css
--> 변경된 파일명이 staged files에 적용
-
-12. head 
--> 현재 버전
-    head~1 
--> 현재 이전 버전 (현재의 부모 버전)
-    head~2
--> 현재 이전 이전 버전 (현재의 부모의 부모 버전)
-
-13. git log -p 
--> 변경된 파일내용을 버전별로 확인
-
-14. git checkout 328708d 
--> 해시코드의 버전으로 파일 이동
-    git checkout fix 
--> fix 브랜치로 이동
-
-15. git log --pretty=online
-    git log --oneine --graph --all
--> 메인과 브랜치의 전체적인 변경사항을 확인
-    git log -3 
--> 최근 커밋 중 3개만 확인
-    git log --oneline -3 
-    git log --author = "DaeHui"
-    git log --before = "2020-09-08"
-    git log --grep = "project"
--> 프로젝트에 포함된 커밋 확인
-    git log HEAD
-    git log HEAD~1
-    git log HEAD~2
--> 해당 버전의 파일을 확인
-
-16. git show 0ad2dbb
--> 해시코드에 해당하는 파일을 볼 수 있음
-
-## tag 사용
--> tag별로 출시버전을 정해두면 사용하기 편함
-예) v2.0.0 
-주요 major기능 변경.minor기능 변경.기존의 fix기능에서 오류 수정, 기능 개선
-사용법)
-  1. git tag v1.0.0 + 해시코드
-     git tag v1.0.1 + 해시코드 -am "release note"
-     -> 태그에 메시지 남길 때 사용
-     
-  2. git show v1.0.1
-     -> 태그에 해당하는 버전 파일을 확인 할 수 있음
-  
-  3. git tag
-     -> 만들어진 모든 태그 확인 가능
-   
-  4. git tag -d v1.0.1
-     -> 태그 삭제
-     
-  5. git checkout v1.0.1
-     -> 태그에 해당하는 파일 확인
-     
-  6. git checkout -b testing v2.0.0
-     -> v2.0.0 태그의 버전파일에 testing 브런치 생성
-     
-  7. git push origin v1.0.0 
-     -> 서버에 해당 태그의 버전 파일을 올림
-     git push orign --tags
-     -> 모든 태그의 버전 파일들을 서버에 올림
-     git push orign --delete v1.0.0
-     -> 해당 태그의 파일을 삭제
-     
-## 브랜치(branch)
-1. git branch 
--> 현재 컴퓨터에 있는 브랜치 확인
-2. git branch --all 
--> 서버(깃 허브 등)에 있는 브랜치를 포함하여 모든 브랜치 확인
-3. git branch new-branch
--> new-branch라는 브랜치 생성
-4. git switch new-branch
--> new-branch라는 브랜치로 이동
-5. git switch -c new-branch2
--> new-branch2라는 브랜치를 생성한 후 이동
-6. git checkout 해시코드
--> 해시코드에 해당하는 버전의 파일로 이동
-7. git checkout fix
--> fix라는 브랜치로 이동
-8. git checkout -b testing
--> testing라는 브랜치 생성 후 이동
-9. git branch --merged
--> 머지된 브랜치 확인
-10. git merge fix
--> fix라는 브랜치를 머지
-11. git branch -d new-branch2
--> new-branch2라는 브랜치를 삭제
-12. git push orign --delete new-branch2 
--> 서버(깃 허브 등)에 있는 new-branch2라는 브랜치를 삭제
-13. git branch --move fix fix-welcome 
--> fix라는 브랜치를 fix-welcome라는 브랜치로 이름을 변경
-14. git push --set-upstream origin fix-welcome
--> 서버에 있는 브랜치 이름을 fix-welcome으로 변경
-15. git log master..test
--> 마스터 브랜치와 테스트 브랜치 사이의 기록 확인
-16. git diff master..test
--> 마스터 브랜치와 테스트 브랜치 사이의 변경 코드 확인
-
-## 머지(merge)
-### fast-forward merge
-1. git merge feature-a
--> 마스터 브랜치에 feature-a 브랜치를 머지
--> 히스토리에 기록 되지 않음
-2. git branch -d feature-a
--> 머지 후 feature-a 브랜치 삭제
-
-### git merge --no-ff 
-1. git merge --no-ff feature-c
--> 마스터 브랜치에 feature-c 브랜치를 머지
--> 히스토리에 기록 됨
-2. git branch -d feature-c
--> 머지 후 feature-c 브랜치 삭제
-
-### three-way merge
-1. git merge feature-b
--> 마스터 브랜치에서 feature-b 브랜치를 생성한 후 마스터 브랜치에서 커밋이 발생한 경우
-feature-b브랜치와 동시에 묶어주는 머지커밋이 만들어 짐
-
-### merge conflict
-1. 수동방법
-git merge feature
--> 마스터 브랜치와 feature 브랜치의 파일 수정 내용이 같을 경우에 merge conflict 발생
-git merge --abort
--> 머지 한 것을 취소
-open main.txt
--> 파일을 수동으로 수정(HEAD 문자열과 feature문자열을 삭제)
-git add main.txt
-git merge --continue
--> 수정된 파일 내용이 머지 됨
-
-2. vscode방법
-git config --global -e
--> 에디트 창 열기
-[merge]
-tool = vscode
-[mergetool "vscode"]
-cmd = code --wait $MERGED 
--> 에디트 창에 추가
-git config --global mergetool.keepbackup false
--> .orig 충돌된 원본 파일을 저장하지 않도록 설정
-git merge feature
--> 머지충돌 발생
-git mergetool 
--> 수정할 파일의 옵션에서 선택
-git merge --continue 
-
-## 리베이스(rebase)
--> three-way merge 상황에서 다른 개발자와 협업 하지 않고 나의 로컬에 있는 작업만 머지할 경우
-마스터 브랜치의 최신 버전과 rebase를 이용하여 fast-forward merge가 가능
-
-1. git checkout feature-b
--> feature-b 브랜치로 이동
-2. feature-b> git rebase master
--> feature-b 브랜치를 마스터 브랜치에  rebase 함
-3. git checkout master
--> 마스터 브랜치로 이동
-4. master> git merge feature-b 
--> feature-b 브랜치를 마스터 브랜치에 머지(히스토리 기록 없음)
--> fast-forward merge 임
-
-### rebase --onto
--> 브랜치(예 profile)에서 파생된 브랜치(예 profile-ui)를 마스터 브랜치에 머지 할 때 사용
-
-1. master> git rebase --onto master profile profile-ui
--> 마스터 브랜치에 profile-ui 브랜치를 rebase함
-2. master> git merge profile-ui
--> 마스터 브랜치에 profile-ui 브랜치를 머지 함
-
-## cherry pick
--> 브랜치에서 특정한 커밋 부분만 마스터 브랜치에 머지 할 때
-
-1. master> git cherry-pick f2bq1n8(해당 해시코드)
--> 마스터 브랜치로 해당 커밋 부분이 이동
-
-## stash stack
--> 커밋하기 전 파일들을 임시저장하여 코드에 오류가 있는지 확인
-
-1. git stash push
-   git stash push -m "first try"
--> git에서 트래킹하지 않는 unstaged files을 스태시 하지 않음
-2. git stash -u 
--> git에서 트래팅하지 않는 unstaged files을 스태시 함
-3. git stash list
--> 전체적인 스태시 목록 확인
-4. git stash show stash@{3}
--> 해당 아이디 스태시 파일의 수정된 내용 확인
-5. git stash apply stash@{1}
--> 해당 스태시 파일의 목록을 유지하면서 나의 워킹디렉토리에 적용
-6. git stash pop stash@{1}
--> 해당 스태시 파일의 목록이 없어지고 나의 워킹디렉토리에 적용
-7. git stash drop stash@{1}
--> 해당 스태시 파일 삭제
-8. git stash clear
--> 전체 스태시 파일들 삭제
-9. git stash branch newbranch
--> newbranch라는 브랜치를 만들어서 스태시 파일들을 저장
-     
- # Javascript 정리
+# Javascript 정리
  ## 제어문
  1. if(true) {
       document.write("if문의 조건을 만족하여 문장이 실행");
@@ -694,17 +419,271 @@ git merge --continue
             var month = someday.getMonth()+1;   
             var date = someday.getDate();   
             document.queryselector('#date"+days).innertext = year+"년"+month+"월"+date+"일";    
-            }     
+            } 
+## 배열
+        -> 여러 개의 항목을 하나의 변수에 저장   
+        예) var myArray = new Array();   
+        -> Array객체의 인스턴스를 만들기   
+        var numbers = ["one","two","three","four"];   
+        -> 리터럴을 사용한 배열   
+        var numbers = new Array("one","two","three","four");   
+        -> Array객체를 사용한 배열   
+             
+        1. 둘 이상의 배열을 연결하는 concat()함수   
+        -> 기존의 배열에 또 다른 배열이나 값을 합쳐서 새로운 배열을 만드는 함수   
+        예) var nums = ["!","2","3"];   
+        var chars = ["a","b","c","d"];   
+        nums.concat(chars)   
+        -> nums배열에 chars배열 연결   
+        -> ["1","2","3","a","b","c","d"]   
+           
+        2. 배열요소를 연결하는 join()함수   
+        -> 배열요소를 연결하는 함수로 함수에서 구분기호를 정하지 않으면 쉼표(,)로 요소를 구분   
+        예) nums.join()   
+        -> 구분기호 없이 연결   
+        "1,2,3"   
+        nums.join("-")   
+        -> 구분기호("-")를 사용해 연결   
+        "1-2-3"  
+        myColor = ["red","green","blue"];   
+        myColor.join("+")   
+        colorString = "red + green + blue";   
+           
+        3. push()함수   
+        -> 배열의 맨 끝에 요소를 추가   
+        var nums = ["1","2","3"]   
+        nums.push("4","5")   
+        -> nums배열 맨 끝에 "4"와"5"요소 추가   
+        nums   
+        ["1","2","3","4","5"]   
+           
+        4. unshift()함수   
+        -> 배열의 맨 앞에 추가   
+        예) nums.unshift("0")   
+        -> nums배열 맨 앞에 "0" 요소 추가   
+        nums   
+        -> ["0","1","2","3","4","5"]   
             
+        5. pop()함수   
+        -> Array객체에서 맨 뒤에 있는 요소를 추출할 때   
+        -> 배열에서 요소를 추출하면 해당 요소가 배열에서 빠지면서 배열이 수정    
+        예) var study = ["html","css","javascript"]   
+        study.pop()   
+        "javascript"   
+        study   
+        ["html","css"]   
+           
+        6. shift()함수   
+        -> 배열의 첫 요소 반환   
+        -> 해당 요소가 배열에서 빠지면서 배열이 수정   
+        예) var js = ["es6+","node","react","angular","vue"]  
+        js.shift()   
+        "es6+"   
+           
+        7. splice()함수   
+        -> 괄호 안에 들어 있는 인수에 따라 일정구간의 요소를 삭제하고 새로운 요소를 추가   
+        -> 삭제한 구간의 요소들로 이루어진 새로운 배열이 결과값으로 표시   
+        예) var numbers = [0,1,2,3,4,5]   
+        numbers.splice(2)   
+        -> 인덱스2(세번째 요소)이후 끝까지 삭제   
+        [2,3,4,5]   
+        -> 삭제된 요소로 이루어진 배열   
+        numbers   
+        [0,1]   
+        -> 수정된 원래 배열   
+           
+        ㄱ. splice() 함수에 인수가 2개일 경우   
+        -> 첫 번째 인수는 인덱스 값이고, 두 번째 인수는 삭제할 개수   
+        예) var study = ["html","css","web","jquery"]   
+        study.splice(2,1)   
+        -> 인덱스 2에서 한 개 삭제   
+        ["web"]   
+        -> 삭제된 요소로 이루어진 배열   
+        study   
+        ["html","css","jquery"]   
+        -> 수정된 원래 배열   
+           
+        ㄴ. splice()함수에 인수가 3개일 경우   
+        -> 세 번째 인수는 앞서 삭제한 위치에 새로 추가할 요소를 지정   
+        예) study.splice(2,1,"js")   
+        ["jquery"]   
+        -> 인덱스 2에서 1개 삭제   
+        study   
+        ["html","css","js"]   
+        -> 삭제한 자리에서 새로운 요소를 추가   
+        var chars = ["a","e","f"]   
+        chars.splice(1,0,"b","c","d")
+        []   
+        chars   
+        ["a","b","c","d","e","f"]   
+        ->새로운 요소 3개 추가   
+           
+        8. slice()함수   
+        -> 원하는 위치의 요소들을 추출   
+        예) var colors = ["red","green","blue","white","black"]   
+        colors.slice(2)   
+        ["blue","white","black"]   
+        -> 인덱스 2부터 끝까지 추출   
+        colors   
+        ["red","green","blue","white","black"]   
+        -> 원래 배열은 변경되지 않음   
+        var colors2 = colors.slice(1,4)   
+        colors2   
+        ["green","blue","white"]   
+        -> 두 번째 요소(인덱스1)부터 네번째 요소(인덱스3)까지 추출해서 새로운 배열 colors2생성   
+        colors   
+        ["red","green","blue","white","black"]   
+        ->원래 배열은 변경되지 않음   
+           
+# 여행준비물 점검 프로그램 만들기   
+        var itemList = new Array();   
+        =var itemList = [];   
+        var addBtn = document.querySelector("#add");   
+        -> #add인 요소를 가져와 addBtn으로 저장    
+        addBtn.addEventListener("click",addList);   
+        -> addBtn을 클릭하면 addList함수 실행   
+        function addList() {   
+            var item = document.querySelector("#item").value;   
+            -> 텍스트 필드 내용을 가져옴   
+            if(item != null) {   
+                   itemList.push(item);   
+                   -> itemList배열 끝에 item 변수 값 추가   
+                   document.querySelector("#item").value = "";   
+                   -> id = "item"인 요소 값을 지움   
+                   document.querySelector("#item").focus();   
+                   -> 텍스트 필드에 focus()함수 적용   
+                   }   
+        function showList() {   
+            var list = "<ul>";   
+            -> 목록을 시작하는 <ul>태그 저장   
+            for(var i=0; i<itemList.length; i++) {   
+               list += "<li>" + itemList[i] + "</li>";   
+               -> 각 요소를 <li> ~ </li>로 묶음   
+               }   
+               list += "</ul>";   
+               document.querySelector("#itemList).innerHTML = list;   
+               -> list 변수값 표시   
+               }   
+# 챙긴 준비물 목록에서 지우기   
+        function showList() {      
+             ... ...
+             for(var i=0; i<itemList.length; i++) {    
+                list += "<li>" + itemList[i] + "<span class='close' id="+i+"> X </span></li>";   
+                var remove = document.querySelectorAll(".close");   
+                -> 삭제 버튼을 변수로 저장. 배열형태가 됨   
+                }   
+                
+             for(var i=0; i<remove.length; i++) {   
+                  remove[i].addEventListener("click",removeList);   
+                  }   
+                -> 요소를 클릭하면 removeList()실행   
+        function removeList() {   
+             console.log(this);   
+               -> this 값을 콘솔 창에 표시   
+             var id = this.getAttribute("id");   
+             itemList.splice(id,1);   
+               -> itemList 배열에서 인덱스 값이 id인 요소 1개 삭제   
+             showList();   
+               -> 변경된 itemList 배열을 다시 화면에 표시   
+             }   
+# 문서객체모델(DOM)   
+        -> 웹 문서의 모든 요소를 자바스크립트를 이용하여 조작할 수 있도록 객체를 사용해 문서를 해석하는 방법   
+        1. DOM을 사용해 상세설명 가리기   
+           document.querySelector('#detail h3').style.visibility = 'hidden'   
+           document.querySelector('#detail p').style.visibility = 'hidden'   
+        2. DOM 트리   
+           ㄱ. 웹 문서의 태그는 요소(element)노드로 표현   
+           ㄴ. 태그가 품고 있는 텍스트는 해당 요소 노드(태그)의 자식 노드인 텍스트(Text)노드로 표현   
+           ㄷ. 태그의 속성은 모두 해당 요소 노드(태그)의 자식 노드인 속성(Attribute)노드로 표현   
+           ㄹ. 주석은 주석(Comment)노드로 표현   
+             -> 웹 문서를 놓고 DOM 트리를 상상하면 자바스크립트로 원하는 요소에 어떻게 접근할 지 쉽게 생각 가능   
+        3. DOM 요소에 접근하기   
+          -> DOM 요소에 접근할 때는 주로 선택자를 사용   
+          ㄱ. DOM 요소를 id선택자로 접근하는 함수(getElementById())   
+            예) document.getElementById("heading").onclick = function() {   
+                    this.style.fontsize = "5em"   
+                  }   
+                -> id가 heading인 제목을 누르면 접근한 요소의 글자 크기가 커짐   
+            예) document.getElementById("desc")   
+                -> <div id = "desc"> 태그의 텍스트 부분에 접근    
+          ㄴ. DOM 요소를 class 값으로 찾아내는 함수(getElementsByClassName())   
+               -> class 선택자는 id 선택자와 다르게 웹 문서 안에서 여러 번 사용 가능    
+               -> 2개 이상의 웹 요소에 접근   
+               예) document.getElementsByClassName("accent")   
+               -> class 값이 accent인 요소가 배열 형태로 저장됨   
+               -> class 값이 accent인 웹 요소들에 접근   
+               예) document.getElementsByClassName("accent")[0]   
+               -> 배열의 인덱스를 사용하여 첫 번째 요소에 접근   
+               예) document.getElementsByClassName("accent")[0].style.textDecoration = "underline"   
+               <span class = "accent">게뎁농장</span>   
+               -> '게뎁농장'텍스트에 밑줄이 생성 됨  
+          ㄷ. DOM 요소를 태그 이름으로 찾아내는 함수(getElementsByTagName())   
+               -> id나 class 선택자가 없는 DOM 요소에  태그 이름을 찾아 DOM 요소에 접근   
+               -> 여러 DOM 요소들에 접근   
+               예) document.getElementsByTagName("h2")[0].style.backgroundColor = "#eee"   
+               -> h2 태그 이름으로 접근한 DOM요소 중 첫 번째 요소의 배경색을 바꿈   
+          ㄹ. DOM 요소를 id, class, 태그 이름으로 찾아내는 함수(querySelector(), querySelectorAll())   
+               -> id 값 'container'인 DOM 요소에 접근하는 방법 비교   
+               = document.getElementById("container")   
+               = document.querySelector("#container")   
+               예) class 값이 'accent'인 DOM 요소들에 접근   
+               = document.querySelectorAll(".accent")   
+               예) document.querySelectorAll(".accent")[1].style.backgroundColor = "yellow"   
+               -> class 값이 'accent'인 두 번째 요소에 접근한 다음 요소의 배경색을 노란색으로 바꿈   
+               -> 웹 요소 정도만 변경한다면 getElementById(), getElementsByClassName(), getElementsByTagName()함수를 사용하고,   
+               웹 요소 뿐만 아니라 요소의 텍스트나 속성을 변경하거나 새로운 노드를 추가하고 싶다면 querySelector(), querySelectorAll() 함수를 사용    
+          ㅁ.  HTML 태그 속성을 가져오거나 수정하는 함수(getAttribute(), setAttribute())   
+               -> 선택한 상품 이미지를 특정 위치에 표시   
+                 a. 이미지 요소에 접근하는 것   
+                    -> querySelector()함수 사용   
+                 b. 속성에 접근   
+                    -> getAttribute()함수 사용   
+                 c. 접근한 속성 값 변경   
+                    -> setAttribute()함수 사용   
+                 예) <div id="prod-img">   
+                       <img src="images/coffee-pink.jpg" alt="에디오피아 게뎁">   
+                     </div>   
+                 예) document.querySelector("#prod-img>img").setAttribte("src","images/coffee-blue.jpg")   
+                    -> 화면에 표시되는 그림이 변경 됨   
+           ㅂ. 사용자가 누른 작은 이미지를 큰 이미지 위치에 표시   
+               
+                
+                
+        
+             
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+                
+                   
+                   
+           
+       
+        
             
-         
-   
-   
-
-                 
-    
-    
-    
-    
-
-
