@@ -141,6 +141,9 @@ CSS: Essentials
  -> 데이터 속성은 사용자에게 공개할 수 있는 정보만 사용(민감 정보 사용 x)
     이유) 정보가 노출될 가능성 크다
 
+log --graph --all --pretty=format:'%C(yellow)[%ad]%C(reset) %C(green)[%h]%C(reset) | %C(white)%s %C(bold red){{%an}}%C(reset) %C(blue)%d%C(reset)' --date=short
+
+-> git hist alias
 
 
 
