@@ -675,7 +675,37 @@
                        }
                     }
         4. DOM에서 이벤트 처리하기   
-              ㄱ. HTML 태그 안에서 이벤트 처리기 연결하기   
+              ㄱ. HTML 태그 안에서 이벤트 처리기 연결하기    
+                예) <div id="container">   
+                      <img id="pic" src="images/girl.png" alt="" onclick="changePic()">   
+                      -> 누르면 changePic()함수 실행   
+                    </div>   
+                    <script>   
+                      var pic = document.querySelector('#pic');   
+                      function changePic() {
+                        pic.src = "images/boy.png";   
+                        }   
+                    </script>   
+               ㄴ. DOM요소에 이벤트 처리기 연결하기   
+                 예) <div id="container">   
+                      <img id="pic" src="images/girl.png" alt="">   
+                     </div>   
+                     <script>   
+                       var pic = document.querySelector('#pic');   
+                       pic.onclick = changePic;   
+                       ->pic 요소를 누르면 changePic()함수 실행   
+                       function changePic() {
+                         pic.src = "images/boy.png";   
+                         }   
+                     </script>   
+                ㄷ. addEventListener()함수 사용하기    
+                   -> 한 요소에 여러 이벤트가 발생했을 때 이를 동시에 처리   
+                   예) var pic = document.querySelector('#pic');   
+                       pic.addEventListener("mouseover",changePic,false);   
+                       -> true이면 캡처링, false이면 버블링, 기본값 false   
+                       -> 캡처링은 DOM의 부모노드에서 자식노드로 이벤트가 전달   
+                          버블링은 DOM의 자식노드에서 부모노드로 이벤트가 전달   
+                       pic.addEventListener   
               
                  
                  
