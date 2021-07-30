@@ -705,7 +705,158 @@
                        -> true이면 캡처링, false이면 버블링, 기본값 false   
                        -> 캡처링은 DOM의 부모노드에서 자식노드로 이벤트가 전달   
                           버블링은 DOM의 자식노드에서 부모노드로 이벤트가 전달   
-                       pic.addEventListener   
+                       pic.addEventListener("mouseout",originPic,false);   
+                       function changePic() {
+                         pic.src = "image/boy.png";   
+                         }   
+                       function originPic() {
+                         pic.src = "images/girl.png";
+                         }   
+                       예) document.addEventListener('click',function() {alert("Hello");});   
+                       -> 웹 문서의 어디를 누르든지 '안녕하세요?'라는 알림창이 나타남   
+        5. DOM으로 CSS 속성에 접근하고 수정하기   
+                   var myRect = document.querySelector('#rect');   
+                   myRect.addEventListener("mouseover",function() {
+                     myRect.style.backgroundColor = "green";   
+                     myRect.style.borderRadius = "50%";   
+                     });   
+                     -> mouseover이벤트 시 myRect요소의 배경색과 테두리 변경   
+                   myRect.addEventListener("mouseout",function() {   
+                     myRect.style.backgroundColor = "";   
+                     myRect.style.borderRadius = "";   
+                     });   
+                     -> mouseout 이벤트 시 myRect 요소의 배경색을 지우고 테두리 둥글게 처리한 것 취소   
+                ㄱ. 웹 요소를 화면에 표시하기/감추기   
+                   -> CSS속성 중 display: none;을 사용해서 웹 요소를 화면에서 감추면 그 요소가 차지하던 공간도 사라지고,   
+                      visibility: hidden;을 사용해서 웹 요소를 감추면 요소가 있던 공간은 빈 상태로 남아있게 됨   
+                   -> display: block;을 사용하면 화면에 웹 요소를 표시   
+                ㄴ. 상세 설명보기/닫기   
+                   var isOpen = false;   
+                   var view = document.querySelector('#view');   
+                   view.addEventListener("click",function() {   
+                     if(isOpen == false) {   
+                       document.querySelector('#detail').style.display = "block";   
+                       -> 상세 정보를 화면에 표시   
+                       view.innerText = "상세설명닫기";   
+                       isOpen = true;   
+                       -> 화면 표시 상태로 지정   
+                       }
+                       else {   
+                          document.querySelector('#detail').style.display = "none";   
+                          -> 상세 정보를 화면에서 감춤   
+                          view.innerText = "상세설명보기";   
+                          isOpen = false;   
+                          -> 화면에서 감춰진 상태로 지정   
+        6. DOM에 요소 추가하기   
+             -> 웹 문서 상에 없던 요소를 추가해서 화면에 표시   
+             -> DOM트리에 새로운 노드를 추가   
+             ㄱ. 요소 노드 만들기(createElement()함수)   
+                예) var newP = document.createElement("p")   
+                    -> <p>태그에 해당하는 요소 노드를 만듦   
+             ㄴ. 텍스트 노드 만들기(createTextNode()함수)   
+                예) var newText = document.createTextNode("주문이 완료되었습니다.")   
+             ㄷ. 자식 노드를 추가하기(appendChild()함수)   
+                -> 텍스트 노드를 요소 노드의 자식 노드로 연결   
+                -> 요소 노드를 다른 요소 노드의 자식 노드로 연결   
+                -> 자식 노드가 여럿일 경우 자식 노드 중 맨 끝에 추가   
+                예) newP.appendChild(newText)   
+                예) document.body.appendChild(newP)   
+                -> <p>태그 소스를 웹 문서의 <body>태그 안에 추가(자식 노드로 추가)   
+             ㄹ. 속성 노드 만들기(createAttrubute()함수)   
+                -> 함수의 괄호 안에 추가할 속성 이름을 지정   
+                예) var attr = document.createAttribute("class")   
+                        attr.value = "accent"   
+             ㅁ. 속성 노드 연결하기(setAttributeNode()함수)   
+                -> 앞에서 선언한 <p>태그 요소 노드에 속성 노드 연결   
+                -> 속성 노드를 요소 노드에 연결할 때 사용   
+                예) newP.setAttributeNode(attr)   
+                    null   
+                    -> 속성 노드를 요소노드에 연결하고 반환값이 null임   
+                  = newP.setAttribute("class","accent")   
+                  예) var easys = document.createAttribute("id")   
+                       easys.value = "doit_js"   
+                       -> easys라는 속성 노드를 만들고 id="doit_js" 속성 값을 지정   
+             ㅂ. 참가 신청 명단 프로그램 만들기   
+                예) <form action="">   
+                      <input type="text" id="userName" placeholder="이름" required>   
+                      <button onclick = "newRegister(); return false;">신청</button>   
+                    </form>   
+                    -> return false를 추가하는 것은 원래 버튼의 기능(입력 내용을 서버로 전송하는 기능)을 사용하지 않은 것   
+                    function newRegister() {   
+                       var newP = document.createElement("P");   
+                       var userName = document.querySelector("#userName");   
+                       var newText = document.createTextNode(userName.value);   
+                       newP.appendChild(newText);   
+                       -> newText노드를 newP노드의 자식 노드로 연결
+                       var nameList = document.querySelector('#nameList");    
+                       nameList.appendChild(newP);
+                       -> newP노드를 nameList노드의 자식 노드로 연결   
+                       userName.value = "";   
+                       -> 다음 이름을 입력할 수 있도록 텍스트 필드 비우기   
+        7. 추가한 노드 순서 바꾸거나 삭제하기   
+               ㄱ. 배열 형식에 여러 값을 저장하듯 여러 노드가 하나의 변수에 저장된 것
+               -> 노드 리스트   
+               예) document.querySelectorAll("p")[0]   
+               -> P노드를 저장한 노드 리스트 중에서 첫 번째 노드를 가져 옴   
+               ㄴ. hasChildNodes()함수   
+               -> 특정 노드에 자식 노드가 있는지를 확인하는 함수   
+               -> 자식 노드가 있다면 true, 없다면 false를 반환   
+               예) document.querySelectorAll("P")[0].hasChildNodes()   
+                   true    
+                   -> 첫 번째 P노드에는 자식노드가 있음   
+         8. 자식 노드에 접근하기    
+         -> 자식 노드가 있다면 childNodes 속성을 사용해서 현재 노드의 자식 노드에 접근   
+         -> 요소 노드 뿐만 아니라 태그와 태그 사이의 줄 바꿈도 빈 텍스트 노드인 자식 노드로 인식   
+         예) <div id="nameList">   
+                 <p>홍길동<span class="del">X</span></p>   
+                 <p>백두산<span class="del">X</span></p>   
+                 <p>도레미<span class="del">X</span></p>   
+             </div>   
+             document.querySelector("nameList").childNodes   
+             NodeList(7)[text,P,text,P,text,P,text]   
+             -> 총 7개 노드   
+             -> <div>태그 다음의 줄 빠꿈, <P>태그 사이의 줄바꿈, </div>태그 앞의 줄 바꿈을 빈 텍스트 노드로 인식   
+             ㄱ. 요소에만 접근하려면 children속성을 사용   
+             예) document.querySelector("#nameList").children   
+                 HTMLCollection(3)[P,P,P]   
+             ㄴ. 원하는 위치에 노드 삽입하기(insertBefore()함수)
+             -> 2개의 인수를 사용   
+             -> 첫 번째 인수는 추가하는 노드이고 두 번째 인수는 기준이 되는 노드   
+             예) nameList.insertBefore(nameList.children[2], nameList.children[0])
+             -> 세 번째 자식 노드를 첫 번째 자식 노드 앞에 추가    
+             ㄷ. 특정 노드 삭제하기(removeChild()함수, parentNode 속성)   
+               a. removeChild()함수   
+               -> 부모 노드에서 자식 노드를 삭제하는 함수이고, 괄호 안에는 삭제하려는 자식 노드가 들어감   
+               b. parentNode 속성   
+               -> 현재 노드의 부모 요소 노드를 반환   
+             ㄹ. 맨 위에 이름 추가하기   
+               -> 새로 추가하는 자식 노드를 기존 자식 노드 보다 앞에 추가   
+                 (appendChild()함수는 맨 뒤에 추가 됨)   
+                 예) var nameList = document.querySelector("#nameList");   
+                      nameList.insertBefore(newP,nameList.childNodes[0]);   
+                      ->newP변수에 담긴 <P>요소를 #nameList 맨 앞에 추가   
+         9. 참가자 명단 프로그램 만들기   
+            예) 참가자 명단 생성   
+              var newText = document.createTextNode(userName.value);   
+              -> 새 텍스트 노드 만들기   
+              newP.appendChild(newText);   
+              -> 텍스트 노드를 <P>요소의 자식 요소로 연결   
+              var delBttn = document.createElement("span");   
+              var delText = document.createTextNode("X");   
+              delBttn.setAttribute("class","del");   
+              -> class 속성 값으로 del을(class="del")생성   
+              delBttn.appendChild(delText);   
+            예) 참가자 명단 삭제   
+              var removeBttns = document.querySelectorAll(".del");   
+                 for(var i=0; i<removeBttns.length; i++) { 
+                   removeBttns[i].addEventListener("click",function() { 
+                     if(this.parentNode.parentNode)   
+                       this.parentNode.parentNode.removeChild(this.parentNode);   
+                       });   
+                       -> 현재 노드(this)의 부모 노드의 부모 노드를 찾아 현재 노드의 부모 노드 <P>노드를 삭제   
+                       -> <span>노드가 현재 노드(this)이다.
+             
+                                                
               
                  
                  
