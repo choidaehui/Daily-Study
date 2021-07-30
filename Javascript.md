@@ -646,6 +646,39 @@
                  예) document.querySelector("#prod-img>img").setAttribte("src","images/coffee-blue.jpg")   
                     -> 화면에 표시되는 그림이 변경 됨   
            ㅂ. 사용자가 누른 작은 이미지를 큰 이미지 위치에 표시   
+              <div id="prod-pic">   
+               <img src="images/coffee-pink.jpg" alt="에디오피아 게뎁" id="cup" width="200" height="200>   
+                <div id="small-pic">   
+                 <img src="images/coffee-pink.jpg" class="small">
+                 <img src="images/coffee-blue.jpg" class="small">
+                 <img src="images/coffee-gray.jpg" class="small">
+                </div>
+              </div>
+                예) var bigPic = document.querySelector("#cup");   
+                    -> 큰 이미지 가져옴   
+                    var smallPics = document.querySelectorAll(".small");
+                    -> 작은 이미지 가져옴   
+                    for(var i=0; i<smallPics.length; i++) {
+                    -> 노드(웹 문서에 있는 요소나 속성)리스트의 각 요소에 접근   
+                    smallPics[i].onclick = showBig;   
+                    -> 요소를 누르면 showBig()함수 실행   
+                    }   
+                    function showBig() {
+                      var newPic = this.src;   
+                      -> click 이벤트가 발생한 대상의 src 속성 값 가져옴   
+                      bigPic.setAttribute("src",newPic);   
+                      -> newPic의 값을 bigPic 속성값에 할당 함   
+                      }   
+                  = for(var i=0; i<smallPics.length; i++) {
+                     smallPics[i].onclick = function(event) {
+                       bigPic.src = this.src;
+                       }
+                    }
+        4. DOM에서 이벤트 처리하기   
+              ㄱ. HTML 태그 안에서 이벤트 처리기 연결하기   
+              
+                 
+                 
                
                 
                 
