@@ -119,31 +119,31 @@
      -> 재선언 불가      
      -> 재할당 가능    
      예)if(true) {   
-         >>let a = 10;     
-         >>let a = 15; -> 사용불가   
-         >>a = 5; -> 사용가능   
-         >>}   
+         let a = 10;     
+         let a = 15; -> 사용불가   
+         a = 5; -> 사용가능   
+         }   
          console.log(a); -> 접근불가    
      2. const   
      -> 재선언 불가     
      -> 재할당 불가   
      -> 상수처럼 사용하고 처음 선언시 반드시 값을 대입   
      >예)if(true) {   
-     >>const a= 10;    
-     >>const a = 15; -> 사용불가      
-     >>      a = 5; -> 사용불가   
-     >>      }      
-     >console.log(a); -> 접근불가 
+     const a= 10;    
+     const a = 15; -> 사용불가      
+          a = 5; -> 사용불가   
+           }      
+     console.log(a); -> 접근불가 
   
   ## 함수   
     -> 특정 기능을 수행하는 소스코드를 따로 묶어놓은 덩어리   
-    >function addNumber(){   
-    >>var sum = 10+20;   
-    >>console.log(sum);   
-    >>}   
-    >>->함수 선언   
-    >>addNumber()   
-    >>->함수 호출   
+    function addNumber(){   
+    var sum = 10+20;   
+    console.log(sum);   
+    }   
+    ->함수 선언   
+     addNumber()   
+    ->함수 호출   
   
   ## 이벤트   
     -> 웹문서에서 버튼을 누르거나 이미지 위에 마우스 포인터를 올려놓는 등의 사건   
@@ -151,34 +151,34 @@
        2. <button onclick = "addNumber()">덧셈계산기</button>   
        3. add.js파일에 앞에 있는 addNumber()함수 소스를 작성하고 저장    
        4. add.html파일에 add.js파일을 연결   
-       ><script src = "js/add.js"></script>   
+       <script src = "js/add.js"></script>   
      
   ## 매개변수와 인수   
     예) var num1 = paseInt(prompt("첫 번째 숫자는?"));   
-    >   var num2 = paseInt(prompt("두 번째 숫자는?));   
-    >   addNumber(num1, num2)   
-    >   -> addNumber()함수의 num1, num2는 인수 = 전달인자 임    
+       var num2 = paseInt(prompt("두 번째 숫자는?));   
+       addNumber(num1, num2)   
+       -> addNumber()함수의 num1, num2는 인수 = 전달인자 임    
 
-    > function addNumber(a,b) {     
-    > >var sum = a + b;   
-    > >alert("두 수를 더한 값은 "+sum+"입니다.");   
-    > >}   
-    > >-> addNumber()함수의 a,b는 매개변수 = 인자 임   
+      function addNumber(a,b) {     
+       var sum = a + b;   
+       alert("두 수를 더한 값은 "+sum+"입니다.");   
+       }   
+       -> addNumber()함수의 a,b는 매개변수 = 인자 임   
 
   ## 매개변수 기본값 지정   
     예)function multiple(a, b=5, c= 10) {   
-    >>return a*b+c;
-    >}   
-    >-> b=5, c=10로 기본값 지정   
-    >multiple(5, 10, 20)   
-    >->결과값은 70   
-    >->a=5, b=10=, c=20   
-    >multiple(10, 20)   
-    >->결과값은 210   
-    >->a=10, b=20, c=10   
-    >multiple(30)   
-    >->결과값은 160   
-    >->a=30, b=5, c=10       
+    return a*b+c;
+    }   
+    -> b=5, c=10로 기본값 지정   
+    multiple(5, 10, 20)   
+    ->결과값은 70   
+    ->a=5, b=10=, c=20   
+    multiple(10, 20)   
+    ->결과값은 210   
+    ->a=10, b=20, c=10   
+      multiple(30)   
+    ->결과값은 160   
+    ->a=30, b=5, c=10       
 
   ## return문 사용   
     -> 함수를 실행한 후 그 결과 값을 함수 밖으로 넘길 때 사용하고 반환위치는 함수를 호출한 위치   
@@ -198,54 +198,54 @@
     지역변수=로컬변수: 한 함수 안에서만 사용할 수 있는 변수      
     전역변수=글로벌변수: 스크립트 소스 전체에서 사용할 수 있는 변수    
     예) var myVar = 100; -> 전역변수 선언    
-    >test();    
-    >document.write("myVar is"+myVar);   
+    test();    
+    document.write("myVar is"+myVar);   
     function test() {     
-    >var myVar = 50; -> 지역변수 선언   
-    >}   
-    >->지역변수는 전역변수에 영향을 주지 않는다.   
-    >->myVar의 값은 100   
-    >->var myVar = 50이 myVar = 50일때는 전역변수가 되어 myVar의 값이 50이 된다.   
+    var myVar = 50; -> 지역변수 선언   
+    }   
+    ->지역변수는 전역변수에 영향을 주지 않는다.   
+    ->myVar의 값은 100   
+    ->var myVar = 50이 myVar = 50일때는 전역변수가 되어 myVar의 값이 50이 된다.   
     블록변수: let예약어를 사용해 변수를 선언하고 변수를 선언한 블록 (중괄호({})로 묶은 부분)에서만 유효   
     익명함수: 함수 자체가 식이기 때문에 변수에 할당할 수 있고, 다른 함수의 매개변수로 사용가능     
     예)var add = function(a,b) {  
-    >return a + b;   
-    >>var sum = add(10, 20);  
-    >>sum   
-    >>->30   
+    return a + b;   
+    var sum = add(10, 20);  
+    sum   
+    ->30   
     즉시 실행함수: 함수를 정의함과 동시에 실행하는 함수고 소스 끝에 세미콜론(;)을 붙임   
     예)(function() {   
     ......     
     })();   
-    >(function() {    
+    (function() {    
     ......     
     }());    
     ->변수에 할당할 수 있고, 함수에서 반환하는 값을 변수에 할당할 수 있음   
     예)var result = (function(a,b) {   
-    >return a + b;   
-    >}(10,20));   
-    console.log(result);   
+     return a + b;   
+     }(10,20));   
+     console.log(result);   
     -> 30      
          
   ## 함수의 화살표 표기법(ES6버전부터)   
-    > var hi = function() {     
-    >> return "안녕하세요?";   
-    >> }   
-    > hi();   
-    >= let hi = () => "안녕하세요?";   
+     var hi = function() {     
+     return "안녕하세요?";   
+     }   
+     hi();   
+     = let hi = () => "안녕하세요?";   
 
-    > var greet = function(name) {     
-    >> return name+" 님, 안녕하세요?";
-    > greet("경희");
-    > = let greet = name => '${name}님, 안녕하세요?';   
-    > greet("경희");   
+     var greet = function(name) {     
+     return name+" 님, 안녕하세요?";
+     greet("경희");
+     = let greet = name => '${name}님, 안녕하세요?';   
+     greet("경희");   
 
-    > var add = function(a, b) {    
-    >> return a + b;   
-    >> }   
-    > add(10, 20)   
-    > = let add = (a, b) => a + b;   
-    > add(10, 20)     
+     var add = function(a, b) {    
+     return a + b;   
+     }   
+     add(10, 20)   
+     = let add = (a, b) => a + b;   
+     add(10, 20)     
      
   ## 이벤트 다루기   
     이벤트: 웹브라우저나 사용자가 행하는 어떤 동작으로 주로 마우스나 키보드를 사용할 때, 웹문서를 불러올 때, 폼에 내용을 입력할 때 주로 발생      
