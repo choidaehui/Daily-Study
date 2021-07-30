@@ -1,370 +1,370 @@
 # Javascript 정리
  ## 제어문
- 1. if(true) {
-      document.write("if문의 조건을 만족하여 문장이 실행");
-      }
- -> 웹 브라우저 화면에 문장이 나타남
-    if(false) {
-      document.write("if문의 조건을 만족하여 문장이 실행");
-      }
- -> 웹 브라우저 화면에 문장이 나타나지 않음
- 2. if...else문
-    var number = prompt("숫자를 입력하세요.");
-    if(number>0) {
-      alert("0이상의 수를 입력하세요.");
-      }
-    else {
-      document.write("입력한 숫자: "+number);
-      }
- 3. 조건 연산자
-    var score = 85;
-    (score > 75)? alert("통과") : alert("실패");
- -> 조건이 true이면 "통과" false이면 "실패"
+    1. if(true) {
+         document.write("if문의 조건을 만족하여 문장이 실행");
+         }
+    -> 웹 브라우저 화면에 문장이 나타남
+       if(false) {
+         document.write("if문의 조건을 만족하여 문장이 실행");
+         }
+    -> 웹 브라우저 화면에 문장이 나타나지 않음
+    2. if...else문
+       var number = prompt("숫자를 입력하세요.");
+       if(number>0) {
+         alert("0이상의 수를 입력하세요.");
+         }
+       else {
+         document.write("입력한 숫자: "+number);
+         }
+    3. 조건 연산자
+       var score = 85;
+       (score > 75)? alert("통과") : alert("실패");
+    -> 조건이 true이면 "통과" false이면 "실패"
  ## falsy -> false로 인정하는 값
- 1. 0
- 2. ""
- 3. NAN(not a number) -> 값을 할당하지 않고 연산할 경우
- 4. undefined -> 값이 처음부터 변수에 할당되지 않음
- 5. null -> 유효하지 않은 값
+     1. 0
+     2. ""
+     3. NAN(not a number) -> 값을 할당하지 않고 연산할 경우
+     4. undefined -> 값이 처음부터 변수에 할당되지 않음
+     5. null -> 유효하지 않은 값
  ## 3의 배수 검사기
- 1. var userNumber = prompt("숫자를 입력하세요.");
-    if (userNumber != null) {.....}
-    else {....}
- -> true가 될 경우가 많은 조건을 if문에 넣고 다른 조건은 else문에서 처리
- 2. var userNumber = prompt("숫자를 입력하세요.");
-    var displayArea = document.queryselector('#result');
-    if(userNumber != null) {
-      if(userNumber % 3 === 0) {
-         displayArea.innerHTML = userNumber + "은 3의 배수 입니다.";
+    1. var userNumber = prompt("숫자를 입력하세요.");
+       if (userNumber != null) {.....}
+       else {....}
+    -> true가 될 경우가 많은 조건을 if문에 넣고 다른 조건은 else문에서 처리
+    2. var userNumber = prompt("숫자를 입력하세요.");
+       var displayArea = document.queryselector('#result');
+       if(userNumber != null) {
+         if(userNumber % 3 === 0) {
+            displayArea.innerHTML = userNumber + "은 3의 배수 입니다.";
+            }
+         else {
+            displayArea.innerHTML = userNumber + "은 3의 배수가 아닙니다.";
+            }
          }
-      else {
-         displayArea.innerHTML = userNumber + "은 3의 배수가 아닙니다.";
-         }
-      }
-  -> <div id = "result"></div> 영역에 3의 배수인지 아닌지 확인한 후 결과값 표시   
+     -> <div id = "result"></div> 영역에 3의 배수인지 아닌지 확인한 후 결과값 표시   
   ## switch문
-  -> 여러 조건 값 확인할 때 사용
-  1. var session = prompt("관심 분야를 선택해주세요. 1-마케팅, 2-개발, 3-디자인","1")
-  -> 기본 값으로 "1"지정
-  switch(session) {
-      case "1" : document.write("201호 강의실 입니다.")
-         break;
-      case "2" : document.write("202호 강의실 입니다.")
-         break;
-      case "3" : document.write("203호 강의실 입니다.")
-         break;
-      default: alert("잘못입력했습니다.");
-      }
-  -> 콜론 다음에 둘 이상의 명령을 실행한다면 중괄호 {   }로 묶음
-  -> 사용자가 입력한 값이 조건값과 일치하지 않을 때 실행할 명령은 default: 에 넣는다
- ## for문
- 1. 1부터 100까지 더하는 for문
- var sum = 0;
- for(var i = 1; i < 101; i++) {
-      sum += i;
-   }
- ## for문 중첩사용(구구단)
- 1. for(var i = 2; i<=9; i++) {
-      document.write(i+"단");
-      for(var j=1; j<=9; j++) {
-         document.write(i+"*"+j+"="+i*j+"<br>");
+     -> 여러 조건 값 확인할 때 사용
+     1. var session = prompt("관심 분야를 선택해주세요. 1-마케팅, 2-개발, 3-디자인","1")
+     -> 기본 값으로 "1"지정
+     switch(session) {
+         case "1" : document.write("201호 강의실 입니다.")
+            break;
+         case "2" : document.write("202호 강의실 입니다.")
+            break;
+         case "3" : document.write("203호 강의실 입니다.")
+            break;
+         default: alert("잘못입력했습니다.");
          }
-     }
- ## while문 사용(팩토리얼 계산기)
- 1. var i = 0
-    while(i<10) {
-      document.write('반복조건이 true이면 반복합니다.<br>');
-      i += 1;
+     -> 콜론 다음에 둘 이상의 명령을 실행한다면 중괄호 {   }로 묶음
+     -> 사용자가 입력한 값이 조건값과 일치하지 않을 때 실행할 명령은 default: 에 넣는다
+ ## for문
+    1. 1부터 100까지 더하는 for문
+    var sum = 0;
+    for(var i = 1; i < 101; i++) {
+         sum += i;
       }
- 2. var i = 0
-    do {
+ ## for문 중첩사용(구구단)
+    1. for(var i = 2; i<=9; i++) {
+         document.write(i+"단");
+         for(var j=1; j<=9; j++) {
+            document.write(i+"*"+j+"="+i*j+"<br>");
+            }
+        }
+ ## while문 사용(팩토리얼 계산기)
+    1. var i = 0
+       while(i<10) {
          document.write('반복조건이 true이면 반복합니다.<br>');
-         i +=1;
-         } 
-    while(i<10);
- 3. var n = prompt("숫자를 입력하세요.");
-    var nFact = 1;
-    var i = 2;
-    while(i <= n) {
-     nFact *= i;
-     i++;
-     }
-    document.write(n+"i="+nFact);
+         i += 1;
+         }
+    2. var i = 0
+       do {
+            document.write('반복조건이 true이면 반복합니다.<br>');
+            i +=1;
+            } 
+       while(i<10);
+    3. var n = prompt("숫자를 입력하세요.");
+       var nFact = 1;
+       var i = 2;
+       while(i <= n) {
+        nFact *= i;
+        i++;
+        }
+       document.write(n+"i="+nFact);
  
  ## 반복문,continue문, if문 활용(10까지 짝수 더하기 프로그램)
- 1. var n = 10;
-    var sum = 0;
-    
-    for(var i = 0; i <=n; i++) {
-     if(i % 2 === 1) {
-      continue;
-      -> 반복문장을 건너뛰고 반복문의 맨 앞으로 돌아감
-      }
-      sum += i;
-      document.write(i+"---------------"+sum+"<br>");
-    }
-    
+    1. var n = 10;
+       var sum = 0;
+
+       for(var i = 0; i <=n; i++) {
+        if(i % 2 === 1) {
+         continue;
+         -> 반복문장을 건너뛰고 반복문의 맨 앞으로 돌아감
+         }
+         sum += i;
+         document.write(i+"---------------"+sum+"<br>");
+       }
+
   ## 변수
-  1. 표기법
-  birthYear, currentYear
-  -> 첫번째 단어는 소문자, 두번째 단어부터는 대문자로 시작
-  -> 낙타표기법(camel case)
-  -> 변수 이름의 첫 글자는 반드시 문자나 _(밑줄), $(달러)기호로 시작
-  2. 템플릿 문자열      
-  -> const originPrice = 24500;    
-  -> document.queryselector("#showResult").innerHTML = '원래 가격은 ${originPrice}원 입니다.';
+     1. 표기법
+     birthYear, currentYear
+     -> 첫번째 단어는 소문자, 두번째 단어부터는 대문자로 시작
+     -> 낙타표기법(camel case)
+     -> 변수 이름의 첫 글자는 반드시 문자나 _(밑줄), $(달러)기호로 시작
+     2. 템플릿 문자열      
+     -> const originPrice = 24500;    
+     -> document.queryselector("#showResult").innerHTML = '원래 가격은 ${originPrice}원 입니다.';
   
   ## 변수를 선언할 때 사용
-  1. let      
-  -> 재선언 불가      
-  -> 재할당 가능    
-  예)if(true) {   
-      >>let a = 10;     
-      >>let a = 15; -> 사용불가   
-      >>a = 5; -> 사용가능   
-      >>}   
-      console.log(a); -> 접근불가    
-  2. const   
-  -> 재선언 불가     
-  -> 재할당 불가   
-  -> 상수처럼 사용하고 처음 선언시 반드시 값을 대입   
-  >예)if(true) {   
-  >>const a= 10;    
-  >>const a = 15; -> 사용불가      
-  >>      a = 5; -> 사용불가   
-  >>      }      
-  >console.log(a); -> 접근불가 
+     1. let      
+     -> 재선언 불가      
+     -> 재할당 가능    
+     예)if(true) {   
+         >>let a = 10;     
+         >>let a = 15; -> 사용불가   
+         >>a = 5; -> 사용가능   
+         >>}   
+         console.log(a); -> 접근불가    
+     2. const   
+     -> 재선언 불가     
+     -> 재할당 불가   
+     -> 상수처럼 사용하고 처음 선언시 반드시 값을 대입   
+     >예)if(true) {   
+     >>const a= 10;    
+     >>const a = 15; -> 사용불가      
+     >>      a = 5; -> 사용불가   
+     >>      }      
+     >console.log(a); -> 접근불가 
   
   ## 함수   
-  -> 특정 기능을 수행하는 소스코드를 따로 묶어놓은 덩어리   
-  >function addNumber(){   
-  >>var sum = 10+20;   
-  >>console.log(sum);   
-  >>}   
-  >>->함수 선언   
-  >>addNumber()   
-  >>->함수 호출   
+    -> 특정 기능을 수행하는 소스코드를 따로 묶어놓은 덩어리   
+    >function addNumber(){   
+    >>var sum = 10+20;   
+    >>console.log(sum);   
+    >>}   
+    >>->함수 선언   
+    >>addNumber()   
+    >>->함수 호출   
   
   ## 이벤트   
-  -> 웹문서에서 버튼을 누르거나 이미지 위에 마우스 포인터를 올려놓는 등의 사건   
-  예)1. add.html 파일 열기   
-     2. <button onclick = "addNumber()">덧셈계산기</button>   
-     3. add.js파일에 앞에 있는 addNumber()함수 소스를 작성하고 저장    
-     4. add.html파일에 add.js파일을 연결   
-     ><script src = "js/add.js"></script>   
+    -> 웹문서에서 버튼을 누르거나 이미지 위에 마우스 포인터를 올려놓는 등의 사건   
+    예)1. add.html 파일 열기   
+       2. <button onclick = "addNumber()">덧셈계산기</button>   
+       3. add.js파일에 앞에 있는 addNumber()함수 소스를 작성하고 저장    
+       4. add.html파일에 add.js파일을 연결   
+       ><script src = "js/add.js"></script>   
      
   ## 매개변수와 인수   
-  예) var num1 = paseInt(prompt("첫 번째 숫자는?"));   
-  >   var num2 = paseInt(prompt("두 번째 숫자는?));   
-  >   addNumber(num1, num2)   
-  >   -> addNumber()함수의 num1, num2는 인수 = 전달인자 임    
+    예) var num1 = paseInt(prompt("첫 번째 숫자는?"));   
+    >   var num2 = paseInt(prompt("두 번째 숫자는?));   
+    >   addNumber(num1, num2)   
+    >   -> addNumber()함수의 num1, num2는 인수 = 전달인자 임    
 
-  > function addNumber(a,b) {     
-  > >var sum = a + b;   
-  > >alert("두 수를 더한 값은 "+sum+"입니다.");   
-  > >}   
-  > >-> addNumber()함수의 a,b는 매개변수 = 인자 임   
-      
+    > function addNumber(a,b) {     
+    > >var sum = a + b;   
+    > >alert("두 수를 더한 값은 "+sum+"입니다.");   
+    > >}   
+    > >-> addNumber()함수의 a,b는 매개변수 = 인자 임   
+
   ## 매개변수 기본값 지정   
-  예)function multiple(a, b=5, c= 10) {   
-  >>return a*b+c;
-  >}   
-  >-> b=5, c=10로 기본값 지정   
-  >multiple(5, 10, 20)   
-  >->결과값은 70   
-  >->a=5, b=10=, c=20   
-  >multiple(10, 20)   
-  >->결과값은 210   
-  >->a=10, b=20, c=10   
-  >multiple(30)   
-  >->결과값은 160   
-  >->a=30, b=5, c=10       
+    예)function multiple(a, b=5, c= 10) {   
+    >>return a*b+c;
+    >}   
+    >-> b=5, c=10로 기본값 지정   
+    >multiple(5, 10, 20)   
+    >->결과값은 70   
+    >->a=5, b=10=, c=20   
+    >multiple(10, 20)   
+    >->결과값은 210   
+    >->a=10, b=20, c=10   
+    >multiple(30)   
+    >->결과값은 160   
+    >->a=30, b=5, c=10       
 
   ## return문 사용   
-  -> 함수를 실행한 후 그 결과 값을 함수 밖으로 넘길 때 사용하고 반환위치는 함수를 호출한 위치   
-  예) 1. var num1 = parseInt(prompt("첫 번째 숫자는?"));   
-      2. var num2 = parseInt(prompt("두 번째 숫자는?"));    
-      3. var result = 8. addNumber(num1, num2);   
-      4. alert("두 수를 더한 값은 " +result+" 입니다.");   
-      5. function addNumber(a,b) {    
-      6.var sum = a + b;   
-      7.return sum;
-      }    
-      실행순서:1->2->8->5->6->7->3->4   
-      ---->6,7번을 return a + b;로 사용 가능     
-          
+    -> 함수를 실행한 후 그 결과 값을 함수 밖으로 넘길 때 사용하고 반환위치는 함수를 호출한 위치   
+    예) 1. var num1 = parseInt(prompt("첫 번째 숫자는?"));   
+        2. var num2 = parseInt(prompt("두 번째 숫자는?"));    
+        3. var result = 8. addNumber(num1, num2);   
+        4. alert("두 수를 더한 값은 " +result+" 입니다.");   
+        5. function addNumber(a,b) {    
+        6.var sum = a + b;   
+        7.return sum;
+        }    
+        실행순서:1->2->8->5->6->7->3->4   
+        ---->6,7번을 return a + b;로 사용 가능     
+
   ## 변수의 적용범위   
-  스코프(scope): 변수를 선언하고 사용할 때 변수가 적용되는 범위   
-  지역변수=로컬변수: 한 함수 안에서만 사용할 수 있는 변수      
-  전역변수=글로벌변수: 스크립트 소스 전체에서 사용할 수 있는 변수    
-  예) var myVar = 100; -> 전역변수 선언    
-  >test();    
-  >document.write("myVar is"+myVar);   
-  function test() {     
-  >var myVar = 50; -> 지역변수 선언   
-  >}   
-  >->지역변수는 전역변수에 영향을 주지 않는다.   
-  >->myVar의 값은 100   
-  >->var myVar = 50이 myVar = 50일때는 전역변수가 되어 myVar의 값이 50이 된다.   
-  블록변수: let예약어를 사용해 변수를 선언하고 변수를 선언한 블록 (중괄호({})로 묶은 부분)에서만 유효   
-  익명함수: 함수 자체가 식이기 때문에 변수에 할당할 수 있고, 다른 함수의 매개변수로 사용가능     
-  예)var add = function(a,b) {  
-  >return a + b;   
-  >>var sum = add(10, 20);  
-  >>sum   
-  >>->30   
-  즉시 실행함수: 함수를 정의함과 동시에 실행하는 함수고 소스 끝에 세미콜론(;)을 붙임   
-  예)(function() {   
-  ......     
-  })();   
-  >(function() {    
-  ......     
-  }());    
-  ->변수에 할당할 수 있고, 함수에서 반환하는 값을 변수에 할당할 수 있음   
-  예)var result = (function(a,b) {   
-  >return a + b;   
-  >}(10,20));   
-  console.log(result);   
-  -> 30      
+    스코프(scope): 변수를 선언하고 사용할 때 변수가 적용되는 범위   
+    지역변수=로컬변수: 한 함수 안에서만 사용할 수 있는 변수      
+    전역변수=글로벌변수: 스크립트 소스 전체에서 사용할 수 있는 변수    
+    예) var myVar = 100; -> 전역변수 선언    
+    >test();    
+    >document.write("myVar is"+myVar);   
+    function test() {     
+    >var myVar = 50; -> 지역변수 선언   
+    >}   
+    >->지역변수는 전역변수에 영향을 주지 않는다.   
+    >->myVar의 값은 100   
+    >->var myVar = 50이 myVar = 50일때는 전역변수가 되어 myVar의 값이 50이 된다.   
+    블록변수: let예약어를 사용해 변수를 선언하고 변수를 선언한 블록 (중괄호({})로 묶은 부분)에서만 유효   
+    익명함수: 함수 자체가 식이기 때문에 변수에 할당할 수 있고, 다른 함수의 매개변수로 사용가능     
+    예)var add = function(a,b) {  
+    >return a + b;   
+    >>var sum = add(10, 20);  
+    >>sum   
+    >>->30   
+    즉시 실행함수: 함수를 정의함과 동시에 실행하는 함수고 소스 끝에 세미콜론(;)을 붙임   
+    예)(function() {   
+    ......     
+    })();   
+    >(function() {    
+    ......     
+    }());    
+    ->변수에 할당할 수 있고, 함수에서 반환하는 값을 변수에 할당할 수 있음   
+    예)var result = (function(a,b) {   
+    >return a + b;   
+    >}(10,20));   
+    console.log(result);   
+    -> 30      
          
   ## 함수의 화살표 표기법(ES6버전부터)   
-  > var hi = function() {     
-  >> return "안녕하세요?";   
-  >> }   
-  > hi();   
-  >= let hi = () => "안녕하세요?";   
+    > var hi = function() {     
+    >> return "안녕하세요?";   
+    >> }   
+    > hi();   
+    >= let hi = () => "안녕하세요?";   
 
-  > var greet = function(name) {     
-  >> return name+" 님, 안녕하세요?";
-  > greet("경희");
-  > = let greet = name => '${name}님, 안녕하세요?';   
-  > greet("경희");   
-      
-  > var add = function(a, b) {    
-  >> return a + b;   
-  >> }   
-  > add(10, 20)   
-  > = let add = (a, b) => a + b;   
-  > add(10, 20)     
+    > var greet = function(name) {     
+    >> return name+" 님, 안녕하세요?";
+    > greet("경희");
+    > = let greet = name => '${name}님, 안녕하세요?';   
+    > greet("경희");   
+
+    > var add = function(a, b) {    
+    >> return a + b;   
+    >> }   
+    > add(10, 20)   
+    > = let add = (a, b) => a + b;   
+    > add(10, 20)     
      
   ## 이벤트 다루기   
-  이벤트: 웹브라우저나 사용자가 행하는 어떤 동작으로 주로 마우스나 키보드를 사용할 때, 웹문서를 불러올 때, 폼에 내용을 입력할 때 주로 발생      
-  이벤트 처리기 = 이벤트 핸들러: 이벤트와 이벤트 처리 함수를 연결해 주는 것으로 이벤트 이름 앞에 on을 붙임   
-``` javascript  
-  예)function showDetail() {    
-   document.queryselector('#desc').style.display = "block";   
-   ->상세 설명내용을 화면에 표시   
-   document.queryselector('#open').style.display = "none";   
-   ->상세 설명보기 버튼을 감춤   
-     
-  function hideDetail() {   
-   document.queryselector('#desc').style.display = "none";   
-   document.queryselector('#open').style.display = "block";   
-     
-   <div id="item">   
-    <img src = "images/flower.jpg" alt="">   
-    <button class="over" id="open" onclick="showDetail()">   
-    상세설명보기</button>   
-   </div>   
-     
-  <div id="desc" class="detail">   
-    <h4>상세설명</h4>   
-    <p>상세설명내용</p>   
-   <button id="close" onclick="hideDetail()">   
-    상세설명닫기</button>   
-  </div>   
-   
-   ## 여러 이벤트 처리기 연결하기   
-   <img src = "images/flower.jpg" alt="" id="cover">   
-      
-   var coverImage = document.queryselector("#cover");   
-   coverImage.onclick = function() {   
-    alert('눌렀습니다.');   
-    };   
-   coverImage.onmouseover = function() {     
-    coverImage.style.border = "5px black solid";   
-    };   
-   coverImage.onmouseout = functon() {   
-    coverImage.style.border = "";   
-    };   
-```
+    이벤트: 웹브라우저나 사용자가 행하는 어떤 동작으로 주로 마우스나 키보드를 사용할 때, 웹문서를 불러올 때, 폼에 내용을 입력할 때 주로 발생      
+    이벤트 처리기 = 이벤트 핸들러: 이벤트와 이벤트 처리 함수를 연결해 주는 것으로 이벤트 이름 앞에 on을 붙임   
+  ``` javascript  
+    예)function showDetail() {    
+     document.queryselector('#desc').style.display = "block";   
+     ->상세 설명내용을 화면에 표시   
+     document.queryselector('#open').style.display = "none";   
+     ->상세 설명보기 버튼을 감춤   
+
+    function hideDetail() {   
+     document.queryselector('#desc').style.display = "none";   
+     document.queryselector('#open').style.display = "block";   
+
+     <div id="item">   
+      <img src = "images/flower.jpg" alt="">   
+      <button class="over" id="open" onclick="showDetail()">   
+      상세설명보기</button>   
+     </div>   
+
+    <div id="desc" class="detail">   
+      <h4>상세설명</h4>   
+      <p>상세설명내용</p>   
+     <button id="close" onclick="hideDetail()">   
+      상세설명닫기</button>   
+    </div>   
+
+     ## 여러 이벤트 처리기 연결하기   
+     <img src = "images/flower.jpg" alt="" id="cover">   
+
+     var coverImage = document.queryselector("#cover");   
+     coverImage.onclick = function() {   
+      alert('눌렀습니다.');   
+      };   
+     coverImage.onmouseover = function() {     
+      coverImage.style.border = "5px black solid";   
+      };   
+     coverImage.onmouseout = functon() {   
+      coverImage.style.border = "";   
+      };   
+  ```
 
 ## 객체
-    -> 숫자, 문자열 등 여러가지 자료형이 포함되는 복합자료형으로 자료를 저장하고 처리하는 기본단위    
-    1. 내장객체   
-    -> 자바스크립트 프로그래밍을 할 때 자주 사용하는 요소는 자바스크립트 안에 미리 객체로 정의   
-    -> 예를 들어 날짜나 시간과 관련된 프로그램을 작성할 때는 Date객체를 사용해 현재 시각을 알아내고 그 정보를 손쉽게 가져다 사용   
-    2. 문서 객체 모델(DOM) - 내장객체   
-    -> 객체를 사용해 웹문서를 관리하는 방식   
-    -> 예를 들어 웹문서 자체를 담는 Document객체, 웹문서 안의 이미지를 관리하는 Image객체 등   
-    3. 브라우저 객체 모델 - 내장객체   
-    -> 웹브라우저의 주소표시줄이나 창크기 등 웹브라우저 정보를 객체로 다루는 것   
-    -> 예를 들어 사용 중인 브라우저 종류나 버전을 담고 있는 Navigator객체, 브라우저에서 방문한 기록을 남기는 History객체, 주소표시줄 정보를 담고 있는   
-    Location객체, 화면크기정보가 들어 있는 Screen객체 등   
-    4. 사용자 정의 객체   
-    -> 여러 정보를 하나로 묶어 사용해야 할 때 사용자가 직접 객체를 만듦   
-        
+       -> 숫자, 문자열 등 여러가지 자료형이 포함되는 복합자료형으로 자료를 저장하고 처리하는 기본단위    
+       1. 내장객체   
+       -> 자바스크립트 프로그래밍을 할 때 자주 사용하는 요소는 자바스크립트 안에 미리 객체로 정의   
+       -> 예를 들어 날짜나 시간과 관련된 프로그램을 작성할 때는 Date객체를 사용해 현재 시각을 알아내고 그 정보를 손쉽게 가져다 사용   
+       2. 문서 객체 모델(DOM) - 내장객체   
+       -> 객체를 사용해 웹문서를 관리하는 방식   
+       -> 예를 들어 웹문서 자체를 담는 Document객체, 웹문서 안의 이미지를 관리하는 Image객체 등   
+       3. 브라우저 객체 모델 - 내장객체   
+       -> 웹브라우저의 주소표시줄이나 창크기 등 웹브라우저 정보를 객체로 다루는 것   
+       -> 예를 들어 사용 중인 브라우저 종류나 버전을 담고 있는 Navigator객체, 브라우저에서 방문한 기록을 남기는 History객체, 주소표시줄 정보를 담고 있는   
+       Location객체, 화면크기정보가 들어 있는 Screen객체 등   
+       4. 사용자 정의 객체   
+       -> 여러 정보를 하나로 묶어 사용해야 할 때 사용자가 직접 객체를 만듦   
+
 ## 객체의 속성과 매서드   
-    1. 속성   
-    -> 객체에서 값을 담고 있는 정보   
-    -> 객체의 속성 값을 가져올 때는 객체 이름 뒤에 마침표(.)를 찍고 그 뒤에 속성 이름을 적음    
-    -> 예)navigator.vendor   
-         "Google Inc"   
-    2. 매서드   
-    -> 객체가 어떻게 동작할지를 선언해 놓은 함수   
-    -> 객체 안에 정의된 함수   
-    -> 객체 이름 다음에 마침표(.)를 찍고 그 뒤에 매서드를 지정   
-    -> 예)window.alert("안녕하세요?")   
-    -> window객체는 모든 객체를 품고 있는 최상위 객체이기 때문에   
-    window객체의 함수를 실행할 때는 window와 마침표를 빼고 alert("내용")처럼 함수 이름만 사용 가능   
+       1. 속성   
+       -> 객체에서 값을 담고 있는 정보   
+       -> 객체의 속성 값을 가져올 때는 객체 이름 뒤에 마침표(.)를 찍고 그 뒤에 속성 이름을 적음    
+       -> 예)navigator.vendor   
+            "Google Inc"   
+       2. 매서드   
+       -> 객체가 어떻게 동작할지를 선언해 놓은 함수   
+       -> 객체 안에 정의된 함수   
+       -> 객체 이름 다음에 마침표(.)를 찍고 그 뒤에 매서드를 지정   
+       -> 예)window.alert("안녕하세요?")   
+       -> window객체는 모든 객체를 품고 있는 최상위 객체이기 때문에   
+       window객체의 함수를 실행할 때는 window와 마침표를 빼고 alert("내용")처럼 함수 이름만 사용 가능   
 ## 객체의 프로토타입과 인스턴스   
-    1. 프로토타입(Prototype)   
-    -> 웹이미지를 안들기 위한 기본 틀(예시)   
-    -> 예를 들어 Image객체는 모든 웹 이미지가 공통으로 가지는 속성과 기능을 모아 놓은 것   
-       
-    2. 인스턴스   
-    -> 프로토타입을 사용해 만들어 낸 객체   
-    -> new 예약어 뒤에 프로토타입 객체 이름과 괄호()를 씀   
-    -> 예) var now = new Date()   
-    now는 이제 Date객체의 인스턴스이고, Date객체에서 정의한 속성과 함수를 모두 사용   
-        
+       1. 프로토타입(Prototype)   
+       -> 웹이미지를 안들기 위한 기본 틀(예시)   
+       -> 예를 들어 Image객체는 모든 웹 이미지가 공통으로 가지는 속성과 기능을 모아 놓은 것   
+
+       2. 인스턴스   
+       -> 프로토타입을 사용해 만들어 낸 객체   
+       -> new 예약어 뒤에 프로토타입 객체 이름과 괄호()를 씀   
+       -> 예) var now = new Date()   
+       now는 이제 Date객체의 인스턴스이고, Date객체에서 정의한 속성과 함수를 모두 사용   
+
 ## 내장객체로 무작위 수 프로그램 만들기   
-    -> Math객체는 삼각함수나 로그함수를 비롯한 수학연산 함수를 가지고 있는 내장객체   
-    -> random()함수는 0과1 사이의 무작위 숫자가 표시(0에서 0.99...까지)    
-    1부터 100까지 숫자 중에서 무작위 수를 구하고 소수점 이하를 버리려면 Math.floor(Math.random()*100+1)   
-    -> Math객체는 따로 인스턴스를 생성하지 않음   
-       
+       -> Math객체는 삼각함수나 로그함수를 비롯한 수학연산 함수를 가지고 있는 내장객체   
+       -> random()함수는 0과1 사이의 무작위 숫자가 표시(0에서 0.99...까지)    
+       1부터 100까지 숫자 중에서 무작위 수를 구하고 소수점 이하를 버리려면 Math.floor(Math.random()*100+1)   
+       -> Math객체는 따로 인스턴스를 생성하지 않음   
+
 ## 리터럴 표기법   
-    -> 변수를 선언하면서 동시에 값 10을 지정하는 것   
-    -> var a = 10;   
-    예) var book = {   
-          title: "자바스크립트",   
-          author: "고쌤",   
-          pages: 500,   
-          price: 15000,    
-          info: function() {   
-                  alert(this.title+"책의 분량은"+this.pages+"쪽입니다.");   
-                    }    
-                 };    
-        book.title    
-        "자바스크립트"     
-        
-        book.field = "IT"    
-        -> book객체에 분야정보를 추가할 때    
+       -> 변수를 선언하면서 동시에 값 10을 지정하는 것   
+       -> var a = 10;   
+       예) var book = {   
+             title: "자바스크립트",   
+             author: "고쌤",   
+             pages: 500,   
+             price: 15000,    
+             info: function() {   
+                     alert(this.title+"책의 분량은"+this.pages+"쪽입니다.");   
+                       }    
+                    };    
+           book.title    
+           "자바스크립트"     
+
+           book.field = "IT"    
+           -> book객체에 분야정보를 추가할 때    
 ## 생성자 함수    
-    -> 객체를 만들어 내는 함수    
-    예) function Book(title, author, volume, price) {     
-            this.title = title;   
-            this.author = author;   
-            this.volume = volume;   
-            this.price = price;   
-          }    
-          var html = new Book('웹표준의 정석','ko','608','28000');   
-          -> html 객체는 Book객체의 인스턴스    
-          var youtube = new Book('유튜브 영상 만들기','kim','368','16000');   
-          var python = new Book('점프투 파이썬','park','352','18800');   
-          var bookList = [html, youtube, python];   
-          -> 배열에 객체를 담을 수 있음   
+       -> 객체를 만들어 내는 함수    
+       예) function Book(title, author, volume, price) {     
+               this.title = title;   
+               this.author = author;   
+               this.volume = volume;   
+               this.price = price;   
+             }    
+             var html = new Book('웹표준의 정석','ko','608','28000');   
+             -> html 객체는 Book객체의 인스턴스    
+             var youtube = new Book('유튜브 영상 만들기','kim','368','16000');   
+             var python = new Book('점프투 파이썬','park','352','18800');   
+             var bookList = [html, youtube, python];   
+             -> 배열에 객체를 담을 수 있음   
 ## 기념일 계산기 
          1. new Date("2021-07-11T18:00:00")   
          -> 대문자 T를 추가한 후 시간을 입력   
