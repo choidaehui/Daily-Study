@@ -267,4 +267,8 @@
     -> 전체 스태시 파일들 삭제
     9. git stash branch newbranch
     -> newbranch라는 브랜치를 만들어서 스태시 파일들을 저장
+    
+## 자주 쓰는 깃 단축키
+          1. log --graph --all --pretty=format:'%C(yellow)[%ad]%C(reset) %C(green)[%h]%C(reset) | %C(white)%s %C(bold red){{%an}}%C(reset) %C(blue)%d%C(reset)' --date=short
+               -> git hist alias
 
