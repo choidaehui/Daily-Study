@@ -992,9 +992,78 @@
               pw2.value = "";
               pw2.focus();
               }
-            }  
-        
-        
+            }
+     3. 다양한 폼 요소 다루기
+       ㄱ. 선택 목록 및 옵션 항목에 접근하기 
+         -> 선택 목록은 <option>태그를 사용해 여러 항목을 한꺼번에 지정한 뒤 목록을 펼쳐 원하는 항목을 선택할수 있는 요소
+         
+         <form name="testForm">
+           <label class="reg" for="class">학과</label>
+           <select name-"major" onchange="displaySelect()">
+             <option>----학과선택----</option>
+              ...
+             <option value="elec">전기전자공학과</option> 
+           </select>
+         </form>
+         
+         document.testForm.major
+         document.testForm.major.options
+         document.testForm.major.options[4]
+         // 다섯 번째 옵션 항목에 접근
+         <option value="elec">전기전자공학과</option>
+         document.testForm.major.options[4].innerText  
+         // 다섯 번째 옵션 항목의 화면표시 내용
+         "전기전자공학과"
+         document.testForm.major.option[4].value
+         // 다섯 번째 옵션의 서버 전달 값
+         "elec"
+      ㄴ. 선택 목록에서 사용자가 선택한 옵션 항목 찾아내기
+         document.testForm.major.options.selectedIndex
+         4
+         // '전기전자공학과' 항목을 선택했을 때 다섯 번째 옵션 항목이기 때문에 selectedIndex 속성에는 인덱스 값 4가 들어있음
+         
+         var selectMenu = document.testForm.major;
+         // 선택 목록을 가져와 selectMenu로 저장
+         
+         function displaySelect() {
+           var selectedText = selectMenu.options[selectMenu.selectedIndex].innerText;
+           // 선택한 옵션의 innerText를 가져와 selectedText에 저장
+           alert("[" + selectedText + "]를 선택했습니다.");
+           // selectedText 내용을 알림 창에 표시 
+           }
+           
+      ㄷ. 라디오 버튼과 체크상자에 접근하기
+         -> 라디오 버튼은 여러 개의 항목 중에서 하나의 항목만 선택
+         -> 체크 상자는 여러 개 항목을 선택
+         
+         <form name="testForm">
+           <legend>신청과목</legend>
+           <p>이 달에 신청할 과목을 선택하세요.</p>
+           <label><input type="radio" name="subject" value="speaking">회화</label>
+           <label><input type="radio" name="subject" value="grammer">문법</label>
+           <label><input type="radio" name="subject" value="writing">작문</label>
+           
+           <legend>메일링</legend>
+           <p>메일로 받고 싶은 뉴스 주제를 선택해 주세요.</p>
+           <label><input type="checkbox" name="mailing1" value="news">해외 단신</label>
+           <label><input type="checkbox" name="mailing2" value="dialog">5분 회화</label>
+           <label><input type="checkbox" name="mailing3" value="pops">모닝팝스</label>
+           
+           document.testForm.subject
+           RadioNodeList(3) [input, input, input, value: ""]
+           // 라디오 버튼 중 선택한 버튼의 value값이 저장
+           // 아무 것도 선택하지 않으면 빈 값이 들어감
+           document.testForm.subject[0].checked
+           false
+           document.testForm.subject[1].checked
+           true
+           document.testForm.subject[2].checked
+           false
+           // 라디오 버튼과 체크 상자 요소에 있는 checked 속성의 기본 값은 false이고,
+           // 해당 항목을 선택하면 값이 true로 바뀜
+           // [문법] 항목을 누른 
+           
+           
 ```
      
 
