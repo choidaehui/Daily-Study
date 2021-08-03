@@ -875,7 +875,125 @@
         document.forms["ship"].elements["shippingName"]   
         //배송정보 중 [이름: ]항목의 텍스트 필드에 접근   
         //name 속성을 사용해 접근하려면 <form>태그뿐만 아니라 접근하려는 폼 요소에 모두 name속성이 지정되어 있는지 확인   
-        //name 값을 사용해 폼 요소에 접근 
+        //name 값을 사용해 폼 요소에 접근
+        
+      ㄱ. 폼 배열을 사용해 폼 요소에 접근
+        -> <form>태그와 그 안에 있는 다른 폼 요소에도 id나 class 선택자가 없고 name 속성도 없을 경우에 폼 배열을 사용
+        
+        <div id="container">
+          <h3>로그인</h3>
+          <form>
+            <div id="login_input">
+              <input type="text" autofocus placeholder="아이디">
+              <input type="password" placeholder="비밀번호">
+            </div>
+            <div id="login_bttn">
+              <button type="submit" class="order">로그인</button>
+            </div>
+          </form>
+        </div>
+        
+        document.forms[0].elements[0].value   
+        "imHong"
+        //문서에 폼이 하나 밖에 없으므로 forms[0]라고 입력해 forms 배열의 첫 번째 요소를 지정
+        //입력한 아이디 값을 가져
+        
+      ㄴ. 배송 정보 자동 입력 프로그램 만들기 - 주문 정보 내용 가져오기
+        <li>
+          <label class="field" for="billingName">이름: </label>   
+          <input type="text" class="input-box" id="billingName" name="billingName">   
+        </li>  
+        <li>
+          <label class="field" for="billingTel">연락처: </label>   
+          <input type="text" class="input-box" id="billingTel" name="billingTel">   
+        </li>  
+        <li>
+          <label class="field" for="billingAddr">주소: </label>   
+          <input type="text" class="input-box" id="billingAddr" name="billingAddr">   
+        </li>  
+       <li>
+          <label class="field" for="billingName">이름: </label>   
+          <input type="text" class="input-box" id="billingName" name="billingName">   
+        </li>  
+        <li>
+          <label class="field" for="billingTel">연락처: </label>   
+          <input type="text" class="input-box" id="billingTel" name="billingTel">   
+        </li>  
+        <li>
+          <label class="field" for="billingAddr">주소: </label>   
+          <input type="text" class="input-box" id="billingAddr" name="billingAddr">   
+        </li>  
+        
+        var check = document.querySelector('#shippingInfo');
+        // check 객체(체크상자)에 click 이벤트가 발생했을 때 처리할 함수 정의
+        // 체크상자의 id는 shippingInfo
+        
+        check.addEventListener("click", function() {
+        // check 요소에 click 이벤트가 발생했을 때 실행할 함수
+        // check 객체의 checked 속성은 체크상자가 체크되면 그 값이 true가 되고, 주문정보의 내용을 배송정보로 가져옴
+           if (check.checked == true) {
+                //체크된다면
+                document.querySelector("#shippingName").value
+                = document.querySelector("#billingName").value; 
+                //주문 정보(이름)을 배송 정보(이름)에 복사
+                 document.querySelector("#shippingTel").value
+                = document.querySelector("#billingTel").value; 
+                //주문 정보(전화번호)을 배송 정보(전화번호)에 복사
+                 document.querySelector("#shippingAddr").value
+                = document.querySelector("#billingAddr").value; 
+                //주문 정보(주소)을 배송 정보(주소)에 복사
+                }
+            else {
+                //체크가 해제된다면 배송 정보 필드를 지움 
+                 document.querySelector("#shippingName").value = "";
+                 document.querySelector("#shippingTel").value = "";
+                 document.querySelector("#shippingAddr").value = "";
+             }
+         });
+     
+     2. 폼 요소에 입력 값 검증하기
+        -> 값이 입력되었는지, 입력된 값이 정해진 조건에 맞는지 등을 검사
+        
+        ㄱ. 아이디 글자 수 확인하기
+          var userId = document.querySelector("user-id);
+          // [아이디] 필드를 가져와 변수에 저장
+          userId.onchange = checkId;
+          // userId 요소에서 change 이벤트가 발생하면 checkId() 함수를 실행
+          // change 이벤트는 텍스트 필드 안의 내용이 바뀔 때, [아이디] 필드에 입력을 마치고 그 필드를 빠져나올 때 발생
+          
+          function checkId() {
+            if (userId.value.length < 4 || userId.value.length > 15) {
+              // userId 필드 내용의 길이가 4이하 이거나 15이상일 경우 실행
+                alert("4~15자리의 영문과 숫자를 사용하세요.");
+                userId.select();  
+                //select() 함수는 텍스트 필드에 입력한 내용을 선택
+                }
+            }
+            
+        ㄴ. 비밀번호 확인하기
+          var pw1 = document.querySelector('#user-pw1");
+          var pw2 = document.querySelector('#user-pw2");
+          pw1.onchange = checkPw;
+          pw2.onchange = comparePw();
+          
+          function checkPw() {
+            if (pw1.value.length < 8) {
+              alert("비밀번호는 8자리 이상이어야 합니다.");
+              pw1.value = "";
+              pw1.focus();
+              }
+            }
+            // select()함수는 사용자가 기존에 입력한 값을 선택하고, focus()함수는 기존에 입력한 값이 지워진 자리에
+            // 새로운 값을 입력하도록 텍스트 필드에 커서를 가져다 놓음
+            
+          function comparePw() {
+            if(pw1.value != pw2.value) {
+              alert("암호가 다릅니다. 다시 입력하세요.");
+              pw2.value = "";
+              pw2.focus();
+              }
+            }  
+        
         
 ```
      
