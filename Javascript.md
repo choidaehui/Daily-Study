@@ -535,7 +535,7 @@
         ["red","green","blue","white","black"]   
         ->원래 배열은 변경되지 않음   
            
-# 여행준비물 점검 프로그램 만들기   
+## 여행준비물 점검 프로그램 만들기   
         var itemList = new Array();   
         =var itemList = [];   
         var addBtn = document.querySelector("#add");   
@@ -564,7 +564,7 @@
                document.querySelector("#itemList).innerHTML = list;   
                -> list 변수값 표시   
                }   
-# 챙긴 준비물 목록에서 지우기   
+## 챙긴 준비물 목록에서 지우기   
         function showList() {      
              ... ...
              for(var i=0; i<itemList.length; i++) {    
@@ -586,7 +586,7 @@
              showList();   
                -> 변경된 itemList 배열을 다시 화면에 표시   
              }   
-# 문서객체모델(DOM)   
+## 문서객체모델(DOM)   
         -> 웹 문서의 모든 요소를 자바스크립트를 이용하여 조작할 수 있도록 객체를 사용해 문서를 해석하는 방법   
         1. DOM을 사용해 상세설명 가리기   
            document.querySelector('#detail h3').style.visibility = 'hidden'   
@@ -855,6 +855,30 @@
                        });   
                        -> 현재 노드(this)의 부모 노드의 부모 노드를 찾아 현재 노드의 부모 노드 <P>노드를 삭제   
                        -> <span>노드가 현재 노드(this)이다.
+## 폼과 자바스크립트   
+     1. 폼 요소에 접근하는 여러가지 방법   
+     -> id 값이나 class 값을 사용해 폼 요소에 접근하는 방법은 DOM의 다른 요소에 접근하는 것과 같음
+     ``` javascript 
+       <label class="field" for="billingName">이름: </label>   
+       <input type="text" class="input-box" id="billingName" name="billingName">   
+       document.querySelector("#billingName")
+       //id 값이나 class 값을 사용해 폼 요소에 접근   
+       
+       <form name="ship">   
+        <label class="field" for="shippingName">이름: </label>   
+        <input type="text" class="input-box" id="shippingName" name="shippingName">
+       </form> 
+        document.ship.shippingName   
+        //배송정보 중 [이름: ]항목의 텍스트 필드에 접근   
+        document.forms["ship"].elements["shippingName"]   
+        //배송정보 중 [이름: ]항목의 텍스트 필드에 접근   
+        //name 속성을 사용해 접근하려면 <form>태그뿐만 아니라 접근하려는 폼 요소에 모두 name속성이 지정되어 있는지 확인   
+        //name 값을 사용해 폼 요소에 접근    
+     ```
+     
+
+
+
              
                                                 
               
