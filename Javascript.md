@@ -250,7 +250,8 @@
   ## 이벤트 다루기   
     이벤트: 웹브라우저나 사용자가 행하는 어떤 동작으로 주로 마우스나 키보드를 사용할 때, 웹문서를 불러올 때, 폼에 내용을 입력할 때 주로 발생      
     이벤트 처리기 = 이벤트 핸들러: 이벤트와 이벤트 처리 함수를 연결해 주는 것으로 이벤트 이름 앞에 on을 붙임   
-    ``` javascript  
+    
+``` javascript  
     예)function showDetail() {    
      document.queryselector('#desc').style.display = "block";   
      ->상세 설명내용을 화면에 표시   
@@ -859,7 +860,7 @@
      1. 폼 요소에 접근하는 여러가지 방법   
      -> id 값이나 class 값을 사용해 폼 요소에 접근하는 방법은 DOM의 다른 요소에 접근하는 것과 같음
      
-     ``` javascript 
+``` javascript 
        <label class="field" for="billingName">이름: </label>   
        <input type="text" class="input-box" id="billingName" name="billingName">   
        document.querySelector("#billingName")
@@ -876,7 +877,7 @@
         //name 속성을 사용해 접근하려면 <form>태그뿐만 아니라 접근하려는 폼 요소에 모두 name속성이 지정되어 있는지 확인   
         //name 값을 사용해 폼 요소에 접근 
         
-     ```
+```
      
 
 
