@@ -1062,8 +1062,70 @@
            // 라디오 버튼과 체크 상자 요소에 있는 checked 속성의 기본 값은 false이고,
            // 해당 항목을 선택하면 값이 true로 바뀜
            // [문법] 항목을 누른 
-           
-           
+                   
+```
+
+## 브라우저 객체 모델
+     -> 웹 브라우저 전체를 객체로 관리하는 것
+     -> 자바스크립트 프로그램을 통해 브라우저 창을 관리할 수 있도록 브라우저 요소를 객체화해 놓은 것
+``` javascript
+       1. Window 객체
+        -> 웹 브라우저의 상태를 제어하는 자바스크립트 객체 중 최상위 객체
+          ㄱ. Window 객체의 속성
+            window.innerWidth
+            352
+            window.innerHeight
+            1132
+            -> 웹 사이트 내용 부분의 너비와 높이
+            window.outerWidth
+            757
+            window.outerHeight
+            1132
+            -> 웹 브라우저의 메뉴나 도구 모음 등까지 포함된 너비와 높이
+            
+          ㄴ. Window 객체의 함수
+            참고) 모달 창(Modal Window)이란 이벤트 정보나 공지 내용 등을 표시하기 위해 현재 브라우저 창 위에 띄우는 새로운 창
+                  문서 소스 안에 <div> 태그를 삽입하고 레이어로 표시한 창
+              a. open() 함수
+                -> 링크를 누르거나 웹 문서를 불러오자마자 자동으로 새 창이 뜨는 동작
+                -> 웹 브라우저 창에 새 탭이 열리면서 연결된 문서나 사이트가 표시
+                window.open("https://www.daum.net")
+              = window.open("https://www.daum.net", "")  
+                
+                window.open("https://www.daum.net", "_self")
+                -> 현재 창에 새 창이 표시
+                
+                window.open("https://www.daum.net", "", "left=0, top=0, width=300, height=300")
+                -> 화면 왼쪽 위(left=0. top=0)에 너비 300px, 높이 300px 크기로 열림
+                
+              b. resizeBy() 함수
+                -> 현재 브라우저 창의 크기를 기준으로 너비와 높이에 값을 더해 줌
+                var newWin = window.open("", "", "width=300, height=300")
+                newWin.resizeBy(100, 100)
+                -> 아무 내용도 없는 알림 창의 크기를 가로로 100px, 세로로 100px 늘림
+                newWin.resizeBy(-100,-100)
+                -> 아무 내용도 없는 알림 창의 크기를 가로로 100px, 세로로 100px 줄임
+                
+              c. resizeTo() 함수
+                -> 최종 크기를 지정
+                newWin.resizeTo(200, 200)  
+                -> 알림 창의 크기를 가로와 세로 각각 200px로 지정
+                
+              d. moveBy() 함수
+                -> 현재 위치를 기준으로 가로로 xpx, 세로로 ypx만큼 옮김
+                newWin.moveBy(500, 500)
+              e. moveTo() 함수
+                -> 화면의 왼쪽 위 모서리를 기준으로 가로로 xpx, 세로로 ypx만큼 옮김
+                newWin.moveTo(0, 0)
+                
+                
+              
+      
+
+
+
+
+
 ```
      
 
