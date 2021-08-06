@@ -21,11 +21,28 @@
       var string1 = '안녕하세요';
       var string2 = '반갑습니다';
       var greeting = `${string1} ${string2}`;
-
-
-
-
-
+      var product = { name: '도서', price: '4200원' };
+      var message = `제품 ${product.name}의 가격은 ${product.price}입니다.`;
+      // $기호를 사용하여 변수를 포함
+      var multiLine = `문자열1
+      문자열2`;
+      // 템플릿 문자열은 엔터를 눌러 줄 바꿈을 허용
+      // 이스케이프 시퀀스(\n)를 사용하지 않아도 됨
+      var value = 1;
+      var value = 2;
+      var boolValue = false;
+      var operator1 = `곱셈값은 ${value1 * value2}입니다.`;
+      var operator2 = `${boolValue ? '참' : '거짓'}입니다.`;
+      // $기호를 사용하여 연산을 포함
+      
+      var cart = { name: '도서', price: '1500원'};
+      var getTotal = function(cart) {
+        return `${cart.price}원`;
+        };
+      var myCart = `장바구니에 ${cart.name}가 있습니다. 총 금액은 ${getTotal(cart)}입니다.`;  
 ```
+
+    2. 전개 연산자
+      -> 
       
       
