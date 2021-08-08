@@ -47,7 +47,7 @@
       -> 배열이나, 객체, 함수 인자 표현식([],{},())안에서만 사용 
       -> 배열이나 객체, 변수명 앞에 마침표 세 개(...)를 입력
       
-      ``` javascript 
+``` javascript 
        var array1 = ['one', 'two'];
        var array2 = ['three', 'four'];
        const combined = [...array1, ...array2];
@@ -103,13 +103,13 @@
        var { other, ...others } = combined;
        // 결과: others = { one: 1, two:2, three: 3, four: 4 }
        // 객체에서 특정 값을 추출할 때는 추출하려는 키 이름(other)을 맞추고, 나머지는 전개 연산자로 선언된 변수(others)에 할당 함       
-      ```
+```
     3. 가변 변수와 불변 변수
       -> let은 값을 수정할 수 있는 가변 변수
       -> const은 값을 수정할 수 없는 불변 변수
       -> 불변 변수는 값을 다시 할당할 수 없는 것이지 값을 변경할 수 있음
       
-      ``` javascript 
+``` javascript 
         const arr2 = [];
         arr2.push(1);
         // 결과: arr2 = [1]
@@ -147,7 +147,7 @@
         // obj4 = { name: '새이름', age: 20 }
         const { name, ...obj5 } = obj4;
         // obj5 = { age: 20 }
-      ```
+```
     4. 클래스
     
       
