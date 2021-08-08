@@ -149,6 +149,123 @@
         // obj5 = { age: 20 }
 ```
     4. 클래스
+``` javascript
+       function Shape (x, y) {
+         this.name = 'Shape';
+         this.move(x, y);
+         }
+         // static 함수를 선언
+       Shape.create = function(x, y) { return new Shape(x, y); };
+        // 인스턴스 함수를 선언
+        
+       Shape.prototype.move = function(x, y) {
+         this.x = x;
+         this.y = y;
+         }
+       Shape.prototype.area = function() {
+         return 0;
+         };
+     = Shape.prototype = {
+         move: function(x, y) {
+           this.x = x;
+           this.y = y;
+           },
+         area: function() {
+           return 0;
+           }
+         };
+         
+       var s = new Shape(0, 0);
+       s.area();
+       // 0
+       
+       function Circle(x, y, radius) {
+         Shape.call(this, x, y);
+         this.name = 'Circle';
+         this.radius = radius;
+         }
+       Object.assign(Circle.prototype, Shape.prototype, {
+         area: function() {
+           return this.radius * this.radius;
+         }
+       });
+       var c = new Circle(0, 0, 10);
+       c.area();
+       //100
+       
+       // 앞의 코드를 ES6 클래스 표현식으로 변환
+       class Shape {
+         static create(x, y) { return new Shape(x, y); }
+         name = 'Shape'; // this.name = 'Shape';
+         constructor (x, y) {
+           this.move(x, y);
+           }
+         move(x, y) {
+           this.x = x;
+           this.y = y;
+           }
+         area() {
+           return 0
+           }
+         }
+         var s = new Shape(0, 0);
+         s.area(); 
+         //0
+         // 생성자, 클래스 변수, 클래스 함수 정의에는 변수 선언을 위한 키워드(var, let, const,...)를 사용하지 않음
+         
+         class Circle extends Shape {
+           constructor(x, y, radius) {
+             super(x, y);
+             this.radius = radius;
+             }
+             area() {
+               if (this.radius === 0) return super.area();
+               return this.radius * this.radius;
+               }
+             }
+           var c = new Circle(0, 0, 10);
+           c.area();
+           //100      
+``` 
+    5. 화살표 함수
+    -> 화살표 기호 =>로 함수 선언
+    
+``` javascript 
+        var add = function(first, second) {
+          return first + second;
+          };
+        
+        // 화살표 함수 사용하여 표현
+        var add = (first, second) => {
+          return first + second;
+          };
+        var add = (first, second) => first + second;
+        
+        var addAndMultiple = (first, second) => ({ add: first + second, multiply: first * second });
+        //반환값이 객체라면 괄호로 결과값을 감싸 간결하게 표현
+        
+        function addNumber(num) {
+          return function(value) {
+            return num + value;
+            };
+          }
+        var addNumber = num => value => num + value;
+        
+        class Myclass {
+          value = 10;
+          constructor() {
+            var addThis2 = function(first, second) {
+              return this.value + first + second;
+              }.bind(this);
+          = var addThis3 = (first, second) => this.value + first + second;
+          }
+        }
+        // 화살표 함수는 콜백 함수의 this 범위로 생기는 오류를 피하기 위해 bind() 함수를 사용하여 this객체를 전달
+        // addThis2() 함수는 this를 bind() 함수에 전달하여 this의 범위를 유지
+        // addThis3() 함수의 경우 화살표 함수이므로 이 과정이 생략 됨      
+``` 
+
+   
     
       
       
