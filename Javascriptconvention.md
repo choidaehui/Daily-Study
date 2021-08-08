@@ -1,4 +1,5 @@
 ## 자바스크립트 표기법   
+``` javascript
     1. function myFunc() {
           console.log('Hello!');   
           }; (o)  
@@ -117,6 +118,6 @@
           catch(e) {
             console.error(e);
             }
-          
+```          
         
        
