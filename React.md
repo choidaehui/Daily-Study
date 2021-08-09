@@ -264,6 +264,69 @@
         // addThis2() 함수는 this를 bind() 함수에 전달하여 this의 범위를 유지
         // addThis3() 함수의 경우 화살표 함수이므로 이 과정이 생략 됨      
 ``` 
+    6. 객체 확장 표현식과 구조 분해 할당
+``` javascript 
+       var x = 0;
+       var y = 0;
+       var obj = { x: x, y: y };
+       var randomKeyString = 'other';
+       var combined = {};
+       combined['one' + randomKeyString] = 'some value';
+       // 연산 결과로 키값을 대입할 때는 키값을 지정할 코드를 추가로 작성
+       var obj2 = {
+         x: x,
+         methodA: function() { console.log('method A'); },
+         methodB: function() { return 0; },
+       };
+       //객체에 함수를 추가할 때는 변수에 함수를 할당
+        
+    =  var x = 0;
+       var y = 0;
+       var obj = { x, y};
+       // 키값을 생략하면 자동으로 키의 이름으로 키값을 지정
+       var randomKeyString = 'other';
+       var combined = {
+         ['one' + randomKeyString]: 'some value',
+         };
+         // 추가하여 계산된 키값을 생성
+       var obj2 = {
+         x,
+         methodA() { console.log('method A');},
+         methodB() { return 0; },
+         };
+         
+       var list = [0, 1];
+       var [
+         item1,
+         item2,
+         item3 = -1,
+         ] = list;
+       // var item1 = list[0];
+       // var item2 = list[1];
+       // var item3 = list[2] || -1;
+       var temp = item2;
+       item2 = item1;
+       item1 = temp;
+       // [item2, item1] = [item2, item2];
+       var obj = {
+         key1: 'one',
+         key2: 'two',
+         };
+       var {
+         key1: newKey1,
+         key2,
+         key3 = 'default key3 value',
+         } = obj;
+       // var key1 = 'one';
+       // var key2 = 'two';
+       // var key3 = obj.key3 || 'default key3 value';
+       // var newKey1 = 'one';
+       
+       var [item1, ...otherItems] = [0, 1, 2];
+       // otherItems = [1, 2]
+       var {key1, ...others} = { key1: 'one', key2: 'two' };
+       // others = { key2: 'two' }         
+```
 
    
     
