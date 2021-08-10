@@ -346,6 +346,58 @@
 ```  
     8. 배열함수
       ㄱ. forEach()함수
+``` javascript 
+      function parse(qs) {
+       var queryString = qs.substr(1);
+       // 쿼리 스트링(Query String)은 '웹 주소에 포함시키는 문자열'을 의미
+       // queryString = 'banana=10&apple=20&orange=30'
+       // substr(start, length) 함수는 파라미터로 입력받은 start index부터 length 길이만큼 string을 잘라내어 반환함
+       // 첫 번째 글자의 index는 0에서 시작
+       var chunks = qs.split('&');
+       var result = {};
+       for(var i = 0; i < chunks.length; i++) {
+         var parts = chunks[i].split('=');
+         // i = 0일 때
+         var key = parts[0];
+         // key = 'banana'
+         var value = parts[1];
+         // value = '10'
+         result[key] = value;
+         // result = {banana: '10'}
+         }
+         return result;
+         // result = {banana: '10', apple: '20', orange: '30'} 각 요소 값들이 순환해서 리턴 됨
+       }
+       // var value = Number.isNaN(Number(parts[1])) ? parts[1] : Number(parts[1]);
+       // result[key] = value;
+       // result = {banana: 10}
+       // 10을 문자열이 아닌 숫자로 변환
+       
+       설명) forEach()함수는 세 개의 인수(요소 값, 요소 인덱스, 순회 중인 배열)를 가진다.
+             const array1 = ['a', 'b', 'c'];
+             array1.forEach(element => console.log(element));
+             // "a"
+             // "b"
+             // "c"
+             
+             for 반복문을 forEach()로 바꾸기
+             const items = ['item1', 'item2', 'item3'];
+             const copy = [];
+             
+             for(let i = 0; i < items.length; i++) {
+               copy.push(items[i]);
+               }
+          =  items.forEach(function(item) {
+               copy.push(item);
+               });
+         
+        사용 예) 
+             chunks.forEach((chunk) => {
+               const parts = chunk.split('=');
+               // chunk = 'banana=10', parts = ['banana', '10']
+             
+       
+```      
       
 
    
