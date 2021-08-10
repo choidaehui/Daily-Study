@@ -411,7 +411,72 @@
                  // result = { banana: '10' }
                  });      
 ``` 
-      ㄴ. map()함수
+       ㄴ. map()함수 
+          -> 불변 변수(const)만을 사용
+          -> 배열을 가공하여 새 배열을 만드는 함수
+``` javascript 
+         function parse(qs) {
+           const queryString = qs.substr(1);
+           // queryString = 'banana=10&apple=20&orange=30'
+           const chunks = qs.split('&');
+           // chunks = ['banana=10', 'apple=20', 'orange=30']
+           const result = chunks.map((chunk) => {
+             const [key, value] = chunk.split('=');
+             // key = 'banana', value = '10'
+             return { key: key, value: value };
+             //{ key: 'banana', value: '10' }
+             });
+           return result;
+         }
+         // result = [ { key: 'banana', value: '10' }, { key: 'apple', value: '20' }, { key: 'orange', value: '30' } ];
+         
+        ㄷ. reduce()함수
+           -> 배열을 객체로 변환
+           function sum(numbers) {
+             return numbers.reduce((total, num) => total + num, 0);
+             }
+           sum([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+           // 55
+           // reduce() 함수는 첫 번째 인자를 변환 함수, 두 번째 인자를 초기값 0으로 전달
+           // 변환함수의 첫 번째 인자를 이전 결과값, 두 번째 인자를 배열의 각 요소 값
+           // 초기값 0은 이전 결과값인 total에 할당
+           // 순환 1회차 total: 0 num: 1
+           // 순환 2회차 total: 0 + 1  num: 2
+           // 순환 3회차 total: 0 + 1 +2 num: 3
+           // ...
+           // 순환 10회차 total: 0 + 1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 + 9 num: 10
+           // 최종 반환값 total: 0 + 1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 + 9 + 10 num:55
+           // 배열이 숫자로 변환
+           
+           function parse(qs) {
+             const queryString = qs.substr(1); 
+             // queryString = 'banana=10&apple=20&orange=30'
+             const chunks = qs.split('&');
+             // chunks = ['banana=10', 'apple=20', 'ornage=30']
+             return chunks
+               .map((chunks) => {
+                 const [ key, value ] = chunks.split('=');
+                 // key = 'banana', value = '10'
+                 return { key, value };
+                 // { key: 'banana', value: '10' }
+                 })
+               .reduce((result, item) => {
+               // result = {}, item = { key: 'banana', value: '10' }
+                 result[item.key] = item.value;
+                 // result = { banana: '10' }
+                 return result;
+                 }, {});
+                 // 초기값에 빈 객체 {}를 입력 
+                 // 순환 1회차 result: {} item: { key: 'banana', value: '10' }
+                 // 순환 2회차 result: {banana: '10'} item: {key: 'apple', value: '20'}
+                 // ...
+                 // 최종 반환 값 result: {banana: '10', app;e: '20', orange: '30'}
+                    
+```  
+
+        9. 비동기 함수
+          
+         
       
       
 
