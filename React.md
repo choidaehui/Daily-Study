@@ -394,10 +394,25 @@
         사용 예) 
              chunks.forEach((chunk) => {
                const parts = chunk.split('=');
+               // 처음 요소 값부터 진행
                // chunk = 'banana=10', parts = ['banana', '10']
-             
-       
-```      
+               const key = parts[0];
+               // key = 'banana'
+               const value = Number.isNaN(Number(parts[1])) ? parts[1] : Number(parts[1]);
+               // value = 10
+               result[key] = value
+               // result = { banana: 10 }
+               });
+               
+            =  chunks.forEach((chunk) => {
+                 const [key, value] = chunk.split('=');
+                 // key = 'banana', value = '10'
+                 result[key] = value;
+                 // result = { banana: '10' }
+                 });      
+``` 
+      ㄴ. map()함수
+      
       
 
    
