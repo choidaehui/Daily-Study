@@ -479,8 +479,91 @@
             -> 호이스팅(hoisting): 함수, 변수 등 코드가 나타나는 순서대로 자동적으로 실행
 ``` javascript 
               'use strict';
+               
+               console.log('1');
+               setTimeout(function() {
+                 console.log('2');
+                 }, 1000);
+                 // 1초가 지난 다음 console.log('2')실행
+               console.log('3);
+               // 1
+               // 3
+               // 1초가 지난 후
+               // 2
+               
+            ㄱ. synchronous callback
+            -> 즉각적으로 동기적으로 콜백함수 실행
+                function printImmediately(print) { //print는 콜백
+                  print();  //콜백 실행
+                  }
+                printImmediately( () => console.log('hello') );  
               
-          
+             ㄴ. Asynchronous callback
+             -> 나중에 언제 콜백함수가 실행될 지 모름
+                function printWithDelay(print, timeout) {
+                  setTimeout(print, timeout);
+                  }
+                printWithDelay( () => console.log('async callback', 2000));
+                
+             ㄷ. 콜백지옥 코드
+                class UserStorage {
+                  loginUser(id, password, onSuccess, onError) {
+                    setTimeout( () => {
+                      if(
+                         (id === 'ellie' && password === 'dream') || 
+                         (id === 'coder' && password === 'academy')
+                        ) {
+                          onSuccess(id);
+                          }
+                          else {
+                          onError(new Error ('not found'));
+                          }
+                        }, 2000);
+                      }
+                    getRoles(user, onSuccess, onError) {
+                      setTimeout( () => {
+                        if(user === 'ellie') {
+                          onSuccess( {name: 'ellie', role: 'admin'} );
+                          }
+                          else {
+                          onError( new Error('no access'));
+                          }
+                        }, 1000);
+                      }
+                    }
+                    
+                  const userStorage = new UserStorage();
+                  const id = prompt('enter your ID');
+                  const password = prompt('enter your password');
+                  
+                  userStorage.loginUser(
+                    id,
+                    passward,
+                    user => { userStorage.getRoles(user, 
+                                                   userWithRole => {
+                                                     alert(
+                                                       `Hello ${userWithRole.name}, you have a ${userWithRole.role} role`
+                                                       );
+                                                     },
+                                                    error => {
+                                                      console.log('error');
+                                                      }
+                                                    );
+                                                  },
+                     error => {
+                       console.log('error');
+                       }
+                   );
+                   
+                   // 위 코드들의 문제점
+                   // 1. 가독성이 떨어짐
+                   // 2. 에러 발생 시 디버깅이 어려움
+                   // 3. 유지보수 어려움
+               
+              ㄹ. promise
+              -> 비동기 처리 방식
+              -> 네트워크 통신, 파일 읽어오기 등에 사용
+              -> 
 ```        
         
         
