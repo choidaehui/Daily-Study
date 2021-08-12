@@ -546,12 +546,12 @@
                                                        );
                                                      },
                                                     error => {
-                                                      console.log('error');
+                                                      console.log(error);
                                                       }
                                                     );
                                                   },
                      error => {
-                       console.log('error');
+                       console.log(error);
                        }
                    );
                    
@@ -563,7 +563,41 @@
               ㄹ. promise
               -> 비동기 처리 방식
               -> 네트워크 통신, 파일 읽어오기 등에 사용
-              -> 
+              -> state: 프로미스 상태
+                 pending: 프로미스 진행 중
+                 fulfilled: 프로미스 완료
+                 rejected: 파일을 찾을 수 없거나, 네트워크에 문제
+                 producer: 원하는 기능을 수행하여 해당하는 데이터를 만들어 냄
+                 consumer: 만들어 낸 데이터를 소비
+                 
+                 a. producer
+                 const promise = new Promise((resolve, reject) => {
+                   console.log('doing something...');
+                   // 새로운 프로미스가 생성됐을때 executor가 자동적으로 실행됨
+                   });
+                   settimeout( () => {
+                     resolve('ellie');
+                     // 성공적으로 데이터를 받아왔을때 resolve 콜백 함수를 호출하여 'ellie'라는 값을 전달함
+                     }, 2000);
+                     // reject(new Error( 'no network' ));
+                 b. consumers: then(), catch(), finally()
+                    promise.then((value) => {
+                      -> 프로미스 값이 정상적으로 수행된다면 value값을 받아옴.
+                      -> value는 'ellie' 이다
+                      -> 프로미스가 성공적인 경우
+                             console.log(value);
+                             // 2초 후 'ellie' 콘솔 창에 수행
+                           .catch(error => { 
+                             // 프로미스 실패한 경우
+                             console.log(error);
+                           .finally( () => {
+                            -> 프로미스 성공, 실패와 관계없이 무조건 실행
+                             console.log('finally');    
+                    });
+                    
+               ㅁ.  promise 연결하기
+               
+                    
 ```        
         
         
