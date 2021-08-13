@@ -594,11 +594,107 @@
                             -> 프로미스 성공, 실패와 관계없이 무조건 실행
                              console.log('finally');    
                     });
-                    
+```                   
                ㅁ.  promise 연결하기
+``` javascript 
+                  const fetchNumber = new Promise( (resolve, reject) => {
+                    setTimeout( () => resolve(1), 1000);
+                    });
+                  fetchNumber
+                    .then(num => num * 2) // 2
+                    .then(num => num * 3) // 6
+                    .then(num => {
+                      return new Promise( (resolve, reject) => {
+                        setTimeout( () => resolve(num - 1), 1000);
+                        }); 
+                      })
+                    .then(num => console.log(num))
+                    // 5
+                    // 프로미스 전달 가능
+                    // 2초 후 실행
+```              
+               ㅂ. promise 오류 처리
+``` javascript 
+                 const getHen = () => 
+                   new Promise( (resolve, reject) => {
+                     setTimeout( () => resolve('닭'), 1000 );
+                     });
+                 const getEgg = hen =>
+                   new Promise( (resolve, reject) => {
+                     setTimeout( () => resolve( `${hen} => 계란` ), 1000);
+                     });
+                 const cook = egg =>
+                   new Promise( (resolve, reject) => {
+                     setTimeout( () => resolve(`${egg} => 프라이`), 1000);
+                     });
+                 getHen()
+                   .then(hen => getEgg(hen))
+                   .then(egg => cook(egg))
+                   .then(meal => console.log(meal));
+                   // 결과) 닭 => 계란 => 프라이
+                   
+              =  getHen() // -> 코드 한 줄씩 작성되어 정리
+                   .then(getEgg)
+                   .then(cook)
+                   .then(console.log);
+                   
+                 const getEgg = hen =>
+                   new Promise((resolve, reject) => {
+                     setTimeout( () => reject( new Error(`error! ${hen} => 계란`)), 1000);
+                     });
+                 getHen() //
+                   .then(getEgg)
+                   .catch(error => {
+                     return '식용유';
+                     })
+                   .then(cook)
+                   .then(console.log);                   
+                   // 결과) 식용유 => 프라이
+``` 
+               ㅅ. 콜백 지옥 코드를 프로미스 코드로 바꿈
+``` javascript 
+                 class UserStorage {
+                   loginUser(id, password) {
+                     return new Promise((resolve, reject) => {
+                       setTimeout( () => {
+                         if(
+                           (id === 'ellie' && password === 'dream') ||
+                           (id === 'coder' && password === 'academy')
+                           ){
+                             resolve(id);
+                            }
+                         else{
+                             reject(new Error('not found'));
+                             }
+                           }, 2000);
+                         });
+                       };
+                     }
+                    getRoles(user) {
+                      return new Promise((resolve, reject) => {
+                        setTimeout( () => {
+                          if(user === 'ellie') {
+                            resolve( {name: 'ellie', role: 'admin'} );
+                            }
+                          else {
+                            reject( new Error('no access'));
+                            }
+                          }, 1000);
+                        });
+                      };
+                      
+                  const userStorage = new UserStorage();
+                  const id = prompt('enter your id');
+                  const password = prompt('enter your password');
+                  userStorage.loginUser(id, password)
+                    .then(userStorage.getRoles)
+                    .then(user => alert(
+                      `Hello ${user.name}, you have a ${user.role} role`
+                      ))
+                    .catch(console.log);  
+```               
                
-                    
-```        
+                            
         
         
         
