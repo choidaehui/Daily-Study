@@ -504,8 +504,9 @@
                   setTimeout(print, timeout);
                   }
                 printWithDelay( () => console.log('async callback', 2000));
-                
+```                
              ㄷ. 콜백지옥 코드
+``` javascript             
                 class UserStorage {
                   loginUser(id, password, onSuccess, onError) {
                     setTimeout( () => {
@@ -559,7 +560,7 @@
                    // 1. 가독성이 떨어짐
                    // 2. 에러 발생 시 디버깅이 어려움
                    // 3. 유지보수 어려움
-               
+```               
               ㄹ. promise
               -> 비동기 처리 방식
               -> 네트워크 통신, 파일 읽어오기 등에 사용
@@ -569,7 +570,7 @@
                  rejected: 파일을 찾을 수 없거나, 네트워크에 문제
                  producer: 원하는 기능을 수행하여 해당하는 데이터를 만들어 냄
                  consumer: 만들어 낸 데이터를 소비
-                 
+``` javascript                 
                  a. producer
                  const promise = new Promise((resolve, reject) => {
                    console.log('doing something...');
