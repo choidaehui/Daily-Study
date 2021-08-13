@@ -220,6 +220,9 @@
 ## 리베이스(rebase)
     -> three-way merge 상황에서 다른 개발자와 협업 하지 않고 나의 로컬에 있는 작업만 머지할 경우
     마스터 브랜치의 최신 버전과 rebase를 이용하여 fast-forward merge가 가능
+    -> 깃에서 한 브랜치에서 다른 브랜치를 병합하는 방법은 Merge와 Rebase가 있음
+    -> Rebase는 Merge보다 커밋히스토리가 깔끔하게 정리 됨
+    -> 로컬에서 작업하고 origin으로 push하기 전에 깔끔하게 커밋을 정리하는 차원에서 사용 
 
     1. git checkout feature-b
     -> feature-b 브랜치로 이동
@@ -271,4 +274,33 @@
 ## 자주 쓰는 깃 단축키
     1. log --graph --all --pretty=format:'%C(yellow)[%ad]%C(reset) %C(green)[%h]%C(reset) | %C(white)%s %C(bold red){{%an}}%C(reset) %C(blue)%d%C(reset)' --date=short
       -> git hist alias
-
+      
+## 깃허브 사용법
+    -> remote라는 깃 허브 서버에 git repository 업로드
+    1. fork
+    -> 오픈소스 레퍼지토리를 그대로 복사해 옴
+    2. git push -f
+    -> 로컬 상태의 파일들을 깃 허브 서버의 변경상황과 관계 없이 무조건 업로드
+    3. origin
+    -> 나의 로컬에서 깃 허브 서버에 있는 브랜치를 표기
+    4. git fetch
+    -> 내가 현재 작업하고 있는 HEAD는 그대로 유지하면서 서버에 업데이트 된 히스토리 정보만 가지고 올 때 사용
+    5. git pull
+    -> 서버에 있는 내용을 받아와서 나의 로컬 환경을 서버와 같게 최신버전으로 만듦
+    -> 로컬과 서버의 상태가 동일해 짐
+    6. merge conflict
+    -> 로컬에서 수정한 파일과 서버에서 수정한 파일이 같을 때 발생
+    -> 각각의 브랜치에서 수정한 파일이 같을 때 발생
+    
+    해결방법)
+       git pull --rebase
+       -> 원격저장소에 있는 커밋 히스토리를 한 줄로 깔끔하게 정리하여 로컬에 반영함
+       git mergetool
+       -> 충돌한 파일을 수정함
+       git rebase --continue
+       -> 원격저장소에 있는 커밋을 그대로 가지고 와서 유지
+       -> 로컬에서 커밋 되었던 것만 리베이스해서 새로운 커밋이 됨
+       git push
+       -> 원격저장소에 로컬에서 작업한 새로운 커밋이 추가됨
+       
+    
